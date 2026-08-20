@@ -14,7 +14,8 @@ export function Button({
   ...rest
 }: ButtonProps) {
   return (
-    <button  type='button'
+    <button
+      type="button"
       className={`btn btn-${variant} ${className ?? ''}`}
       {...rest}
     />
