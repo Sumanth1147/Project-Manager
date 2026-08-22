@@ -1,8 +1,8 @@
 
 
-export function ProjectsPage() {
 
+export function ProjectsPage() {
     return (
-        <h2>Projects Page</h2>
+        <p>Projects Page</p>
     )
 }

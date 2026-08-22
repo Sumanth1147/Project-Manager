@@ -1,8 +1,14 @@
+import { useParams } from "react-router-dom"
 
 
 export function TaskPage() {
+    const {taskId} = useParams()
+
+    if (!taskId) {
+        return <p>Task not found</p>
+    }
 
     return (
-        <h2>Task Page</h2>
+        <p>Task Id: {taskId}</p>
     )
 }

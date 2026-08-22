@@ -18,10 +18,10 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/dashboard" replace /> },
       { path: 'dashboard', element: <DashboardPage /> },
       { path: 'projects', element: <ProjectsPage /> },
-      { path: 'project/:projectId', element: <ProjectPage /> },
-      { path: 'task/:taskId', element: <TaskPage /> },
-      { path: 'notfound', element: <NotFoundPage /> },
+      { path: 'projects/:projectId', element: <ProjectPage /> },
+      { path: 'tasks/:taskId', element: <TaskPage /> },
       { path: 'profile', element: <ProfilePage /> },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
 ])
