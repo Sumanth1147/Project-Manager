@@ -12,23 +12,35 @@ body {
   background: var(--bg);
 }
 
-/* 2. Light-mode tokens (base — always defined) */
 :root {
   --text: #4b5563;
+  --text-heading: #111827;
   --bg: #ffffff;
+  --surface: #f9fafb;
   --border: #e5e7eb;
+  --accent: #2563eb;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --radius: 6px;
+}
+
+/* 2. Light-mode tokens (base — always defined) */
+#root {
+  min-height: 100svh;
 }
 
 /* 3. Dark-mode overrides when OS prefers dark */
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
+    --text-heading: #f3f4f6;
     --bg: #16171d;
+    --surface: #1f2028;
     --border: #2e303a;
+    --accent: #60a5fa;
   }
 }
 
-#root {
-  min-height: 100svh;
-}
 

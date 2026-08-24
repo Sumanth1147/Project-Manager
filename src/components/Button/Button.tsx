@@ -1,5 +1,6 @@
 import type { ComponentProps } from 'react'
 import './Button.css'
+import { cn } from '../../lib/cn'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'danger'
 
@@ -16,7 +17,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={`btn btn-${variant} ${className ?? ''}`}
+      className={cn('btn', `btn-${variant}`, className)}
       {...rest}
     />
   )

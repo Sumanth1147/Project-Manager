@@ -1,9 +1,7 @@
-
-
 export interface Project {
-    id: string
-    name: string
-    description: string
-    ownerId: string
-    memberIds: string[]
+  id: string
+  name: string
+  description: string
+  ownerId: string
+  memberIds: string[]
 }
