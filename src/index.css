@@ -12,6 +12,7 @@ body {
   background: var(--bg);
 }
 
+/* 2. Light-mode tokens (base — always defined) */
 :root {
   --text: #4b5563;
   --text-heading: #111827;
@@ -26,7 +27,6 @@ body {
   --radius: 6px;
 }
 
-/* 2. Light-mode tokens (base — always defined) */
 #root {
   min-height: 100svh;
 }
@@ -42,5 +42,3 @@ body {
     --accent: #60a5fa;
   }
 }
-
-

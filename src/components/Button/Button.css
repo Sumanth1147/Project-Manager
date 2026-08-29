@@ -1,11 +1,11 @@
 .btn {
-  margin: 5px;
-  padding: 5px;
+  margin: var(--space-1);
+  padding: var(--space-1);
   cursor: pointer;
   font-size: 25px;
   font-family: inherit;
   border: 2px solid transparent;
-  border-radius: 5px;
+  border-radius: var(--radius);
   transition: border-color 0.3s ease;
 }
 

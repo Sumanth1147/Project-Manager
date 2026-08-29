@@ -1,0 +1,21 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: var(--space-4);
+  gap: var(--space-2);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.empty-state-title {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-heading);
+}
+
+.empty-state-message {
+  margin: 0;
+  max-width: 40ch;
+}

@@ -7,5 +7,9 @@ export function ProjectPage() {
     return <p>Project Not Found</p>
   }
 
-  return <p>Project id: {projectId} </p>
+  return (
+    <>
+      <p>Project id: {projectId} </p>
+    </>
+  )
 }

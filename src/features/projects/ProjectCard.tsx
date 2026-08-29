@@ -1,1 +1,6 @@
 
+
+interface ProjectCardProps {
+    project: Project
+}
+
