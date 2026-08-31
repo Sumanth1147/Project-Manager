@@ -14,7 +14,6 @@
 - **Guard when wrapping, don't guard when passing through.** `{message && <p>{message}</p>}` needs the guard (avoids an empty `<p>`); `{action}` does not.
 - JSX attribute value must be a quoted string or an expression in braces. `disabled=true` is a parse error; `disabled` alone means `true`.
 
-
 ## TypeScript
 
 - Use union types, not `enum` (`erasableSyntaxOnly` forbids enums; unions are the team norm anyway).
@@ -41,7 +40,7 @@
   - `className` needs merging → must be destructured out and combined manually
 - Default `type="button"`, because HTML defaults a button inside a form to `submit` (causes accidental page reloads).
 - Keep shared components non-interactive unless that's their job. A component that's sometimes a div and sometimes a button gets messy.
-- Don't nest interactive elements (a `Button` inside a card-wide `Link`) — invalid a11y, and the click does two things.
+- **Clickable card — `Link` vs `div`:** no actions inside → wrap the whole card in `<Link>` (one clean click target). The moment you add delete/archive/edit buttons → switch to a `<div>` card and link only the part that should navigate. `<button>` inside `<a>` is invalid HTML — screen readers get confused, and clicking the button also fires navigation.
 
 ## `components/` vs `features/`
 
@@ -52,6 +51,7 @@
 
 ## The four states of every list
 
+- `<ul>` + `<li>`, not a pile of `<div>`s. Screen readers announce "list, 2 items" and let users jump between entries; div soup announces nothing. Free a11y and semantically honest — it is a list.
 - Loading / Error / **Empty** / Populated — juniors build only the last one.
 - Keep "no data yet" separate from "no results for this filter" separate from "request failed". Different message, different action.
 - A blank screen is ambiguous: loading? broken? filtered out? genuinely empty?

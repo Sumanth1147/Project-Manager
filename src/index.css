@@ -32,7 +32,8 @@ body {
 }
 
 /* 3. Dark-mode overrides when OS prefers dark */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
+@media (prefers-color-scheme: light) {
   :root {
     --text: #9ca3af;
     --text-heading: #f3f4f6;
@@ -41,4 +42,21 @@ body {
     --border: #2e303a;
     --accent: #60a5fa;
   }
+}
+
+
+.page {
+  padding: var(--space-4);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.page-header h2 {
+  margin: 0;
+  color: var(--text-heading);
 }
