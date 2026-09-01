@@ -2,15 +2,15 @@
 
 **Goal:** build a full project management app (frontend → backend → auth → state → optimization → deploy) to reach a solid mid-level frontend bar.
 
-|                 |                                       |
-| --------------- | ------------------------------------- |
-| Start date      | Mon 17 Aug 2026                                    |
-| Target end date | Sat 13 Feb 2027                                    |
-| Total duration  | 26 weeks (~6 months)                               |
+|                 |                                                     |
+| --------------- | --------------------------------------------------- |
+| Start date      | Mon 17 Aug 2026                                     |
+| Target end date | Sat 13 Feb 2027                                     |
+| Total duration  | 26 weeks (~6 months)                                |
 | Budget          | 10 h/week to 2 Sep, then 8.5 h/week = **224 hours** |
-| Working days    | Mon–Sat to 2 Sep; then Mon, Tue, Wed, Fri, Sat     |
-| Thursdays       | **Buffer from 3 Sep 2026 — office day**            |
-| Sundays         | DSA only — no project work                         |
+| Working days    | Mon–Sat to 2 Sep; then Mon, Tue, Wed, Fri, Sat      |
+| Thursdays       | **Buffer from 3 Sep 2026 — office day**             |
+| Sundays         | DSA only — no project work                          |
 
 **Jump to:** [How to use](#how-to-use-this-file) · [Weekly rhythm](#weekly-rhythm) · [Progress Dashboard](#progress-dashboard) · [Week Tracker](#week-tracker) · [Phase Checklists](#phase-checklists) · [Interview story bank](#interview-story-bank) · [Rules](#rules)
 
@@ -26,45 +26,45 @@
 
 Small fixes that came out of a review but don't belong to a step. Clear these on a buffer day or at the start of a session. Delete the line when done.
 
-| Item | Raised | Why it matters |
-| --- | --- | --- |
+| Item                                                                    | Raised | Why it matters                                                                                                     |
+| ----------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
 | `index.css` dark-mode query is flipped to `prefers-color-scheme: light` | 29 Aug | Ships the theme backwards. Restore to `dark` and preview via DevTools → Rendering → Emulate `prefers-color-scheme` |
-| `find` callback in `ProjectPage` is named `user` but iterates projects | 29 Aug | Misleading name; rename to `project` |
-| Format-on-save not firing — Prettier run manually every time | 25 Aug | Check the Prettier extension is installed/enabled; watch the "Prettier" Output panel on save |
-| Path aliases (`@/lib/cn`) | — | Do it when `../../../` starts hurting, around S6 |
+| `find` callback in `ProjectPage` is named `user` but iterates projects  | 29 Aug | Misleading name; rename to `project`                                                                               |
+| Format-on-save not firing — Prettier run manually every time            | 25 Aug | Check the Prettier extension is installed/enabled; watch the "Prettier" Output panel on save                       |
+| Path aliases (`@/lib/cn`)                                               | —      | Do it when `../../../` starts hurting, around S6                                                                   |
 
 ### Week 1 · 17–22 Aug 2026 — Phase 1: setup → router
 
-| Date   | Day | Planned step                                    | Actual step       | Hrs | Note                                                                     |
-| ------ | --- | ----------------------------------------------- | ----------------- | --- | ------------------------------------------------------------------------ |
-| 17 Aug | Mon | S0–S1 · Clean starter, types + mock data        | S0–S1 done        |     |                                                                          |
-| 18 Aug | Tue | S2 · `Button` component                         | S2 done           |     |                                                                          |
-| 19 Aug | Wed | S2 · CSS fixes, `:focus-visible`, barrel export | S2 done           |     | Vite parse error cost time — HMR was serving stale code                  |
-| 20 Aug | Thu | S3.1–3.2 · Router API choice, page shells | **S3.1–3.6 done** |     | Ahead of plan — also did 3.3 index.css, 3.4 `router.tsx`, 3.5 `RouterProvider`, 3.6 `AppLayout` |
-| 21 Aug | Fri | S3.3 · Rebuild `index.css`, install Prettier | skipped |     | No session |
-| 22 Aug | Sat | S3.4–3.8 · `router.tsx`, `AppLayout`, `RouterProvider`, `useParams` guards | **S3.7–3.8 done** |     | Guards on ProjectPage + TaskPage, `*` catch-all, AppLayout polish |
+| Date   | Day | Planned step                                                               | Actual step       | Hrs | Note                                                                                            |
+| ------ | --- | -------------------------------------------------------------------------- | ----------------- | --- | ----------------------------------------------------------------------------------------------- |
+| 17 Aug | Mon | S0–S1 · Clean starter, types + mock data                                   | S0–S1 done        |     |                                                                                                 |
+| 18 Aug | Tue | S2 · `Button` component                                                    | S2 done           |     |                                                                                                 |
+| 19 Aug | Wed | S2 · CSS fixes, `:focus-visible`, barrel export                            | S2 done           |     | Vite parse error cost time — HMR was serving stale code                                         |
+| 20 Aug | Thu | S3.1–3.2 · Router API choice, page shells                                  | **S3.1–3.6 done** |     | Ahead of plan — also did 3.3 index.css, 3.4 `router.tsx`, 3.5 `RouterProvider`, 3.6 `AppLayout` |
+| 21 Aug | Fri | S3.3 · Rebuild `index.css`, install Prettier                               | skipped           |     | No session                                                                                      |
+| 22 Aug | Sat | S3.4–3.8 · `router.tsx`, `AppLayout`, `RouterProvider`, `useParams` guards | **S3.7–3.8 done** |     | Guards on ProjectPage + TaskPage, `*` catch-all, AppLayout polish                               |
 
 ### Week 2 · 24–29 Aug — Phase 1: shared components + projects list
 
-| Date   | Day | Planned step                                     | Actual step          | Hrs | Note                                                                          |
-| ------ | --- | ------------------------------------------------ | -------------------- | --- | ----------------------------------------------------------------------------- |
-| 24 Aug | Mon | S4.1–4.2 · `components/` vs `features/`, `Card`  | **S4.2 done**        |     | Card + CSS + barrel, `cn` util, Button refactored to `cn`, Prettier installed  |
-| 25 Aug | Tue | S4.3 · `EmptyState` component                    | **S4.3 in progress** |     | Design tokens added to `index.css`, EmptyState started                        |
-| 26 Aug | Wed | S4.3 · `EmptyState` CSS + wire into ProjectsPage | **S4.3 done**        |     | title / message / action slot, dashed border, `40ch` message width            |
-| 27 Aug | Thu | S4.4 · `ProjectCard` + list with `map`/keys | skipped |     | No session — rolled to Sat |
-| 28 Aug | Fri | S4.5–4.6 · `ProjectPage` `find` lookup + not-found state | **revision** |     | `cn.ts` + `ClassValue` deep dive, project-learnings + timeline sync |
-| 29 Aug | Sat | S4.7 · Owner join with `?.`/`??` + metadata list | **S4.4–4.7 done** |     | Fixed relative-link bug (`project/` → `/projects/`); caught up all of 4.4–4.7 |
+| Date   | Day | Planned step                                             | Actual step          | Hrs | Note                                                                          |
+| ------ | --- | -------------------------------------------------------- | -------------------- | --- | ----------------------------------------------------------------------------- |
+| 24 Aug | Mon | S4.1–4.2 · `components/` vs `features/`, `Card`          | **S4.2 done**        |     | Card + CSS + barrel, `cn` util, Button refactored to `cn`, Prettier installed |
+| 25 Aug | Tue | S4.3 · `EmptyState` component                            | **S4.3 in progress** |     | Design tokens added to `index.css`, EmptyState started                        |
+| 26 Aug | Wed | S4.3 · `EmptyState` CSS + wire into ProjectsPage         | **S4.3 done**        |     | title / message / action slot, dashed border, `40ch` message width            |
+| 27 Aug | Thu | S4.4 · `ProjectCard` + list with `map`/keys              | skipped              |     | No session — rolled to Sat                                                    |
+| 28 Aug | Fri | S4.5–4.6 · `ProjectPage` `find` lookup + not-found state | **revision**         |     | `cn.ts` + `ClassValue` deep dive, project-learnings + timeline sync           |
+| 29 Aug | Sat | S4.7 · Owner join with `?.`/`??` + metadata list         | **S4.4–4.7 done**    |     | Fixed relative-link bug (`project/` → `/projects/`); caught up all of 4.4–4.7 |
 
 ### Week 3 · 31 Aug – 5 Sep — Phase 1: Badge, TaskCard, board start
 
-| Date   | Day | Planned step                                      | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------------- | ----------- | --- | ---- |
-| 31 Aug | Mon | S4.8 · Members list with a type predicate         |             |     |      |
-| 1 Sep  | Tue | S5.1 · `Badge` component (status + priority)      |             |     |      |
-| 2 Sep  | Wed | S5.2 · `TaskCard` (feature component)             |             |     |      |
-| 3 Sep  | Thu | **Buffer** · office day                           |             |     |      |
-| 4 Sep  | Fri | S5.3 · `KanbanColumn`                             |             |     |      |
-| 5 Sep  | Sat | S5.4 · `KanbanBoard` + first real `useState`      |             |     |      |
+| Date   | Day | Planned step                                 | Actual step                  | Hrs | Note                                                                                                                                                                                                                                                                                                                            |
+| ------ | --- | -------------------------------------------- | ---------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 31 Aug | Mon | S4.8 · Members list with a type predicate    | **S4.8 done · S5.1 started** |     | Members list via `(user): user is User` predicate. Dropped `require_review` → `TaskStatus` is 3 values; renamed `assignedId` → `assigneeId`. New `features/tasks/taskStatus.ts`: `STATUS_LABELS` (`Record<TaskStatus, string>`), `STATUS_ORDER`, `getNextStatus` / `getPreviousStatus`. `Badge` component itself not built yet. |
+| 1 Sep  | Tue | S5.1 · `Badge` component (status + priority) |                              |     |                                                                                                                                                                                                                                                                                                                                 |
+| 2 Sep  | Wed | S5.2 · `TaskCard` (feature component)        |                              |     |                                                                                                                                                                                                                                                                                                                                 |
+| 3 Sep  | Thu | **Buffer** · office day                      |                              |     |                                                                                                                                                                                                                                                                                                                                 |
+| 4 Sep  | Fri | S5.3 · `KanbanColumn`                        |                              |     |                                                                                                                                                                                                                                                                                                                                 |
+| 5 Sep  | Sat | S5.4 · `KanbanBoard` + first real `useState` |                              |     |                                                                                                                                                                                                                                                                                                                                 |
 
 ### Week 4 · 7–12 Sep — Phase 1: Kanban board
 
@@ -101,14 +101,14 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 ### Week 7 · 28 Sep – 3 Oct — Phase 1: task detail & comments
 
-| Date   | Day | Planned step                                | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------- | ----------- | --- | ---- |
-| 28 Sep | Mon | S7.2 · `Comment` type + mock data           |             |     |      |
-| 29 Sep | Tue | S7.3 · Comment list rendering               |             |     |      |
-| 30 Sep | Wed | S7.4 · Add comment form                     |             |     |      |
-| 1 Oct  | Thu | **Buffer** · office day                     |             |     |      |
-| 2 Oct  | Fri | S7.5 · Task activity / history list         |             |     |      |
-| 3 Oct  | Sat | S8.1–8.2 · Search input + `useMemo` filtering |           |     |      |
+| Date   | Day | Planned step                                  | Actual step | Hrs | Note |
+| ------ | --- | --------------------------------------------- | ----------- | --- | ---- |
+| 28 Sep | Mon | S7.2 · `Comment` type + mock data             |             |     |      |
+| 29 Sep | Tue | S7.3 · Comment list rendering                 |             |     |      |
+| 30 Sep | Wed | S7.4 · Add comment form                       |             |     |      |
+| 1 Oct  | Thu | **Buffer** · office day                       |             |     |      |
+| 2 Oct  | Fri | S7.5 · Task activity / history list           |             |     |      |
+| 3 Oct  | Sat | S8.1–8.2 · Search input + `useMemo` filtering |             |     |      |
 
 ### Week 8 · 5–10 Oct — Phase 1: filters, dashboard, cleanup
 
@@ -145,14 +145,14 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 ### Week 11 · 26–31 Oct — Phase 2: API modules
 
-| Date   | Day | Planned step                                | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------- | ----------- | --- | ---- |
-| 26 Oct | Mon | P2.11 · `projectApi.ts`                     |             |     |      |
-| 27 Oct | Tue | P2.12 · `taskApi.ts`                        |             |     |      |
-| 28 Oct | Wed | P2.13 · `userApi.ts`                        |             |     |      |
-| 29 Oct | Thu | **Buffer** · office day                     |             |     |      |
-| 30 Oct | Fri | P2.14 · Replace mocks in ProjectsPage       |             |     |      |
-| 31 Oct | Sat | P2.15 · Replace mocks in board + task detail |            |     |      |
+| Date   | Day | Planned step                                 | Actual step | Hrs | Note |
+| ------ | --- | -------------------------------------------- | ----------- | --- | ---- |
+| 26 Oct | Mon | P2.11 · `projectApi.ts`                      |             |     |      |
+| 27 Oct | Tue | P2.12 · `taskApi.ts`                         |             |     |      |
+| 28 Oct | Wed | P2.13 · `userApi.ts`                         |             |     |      |
+| 29 Oct | Thu | **Buffer** · office day                      |             |     |      |
+| 30 Oct | Fri | P2.14 · Replace mocks in ProjectsPage        |             |     |      |
+| 31 Oct | Sat | P2.15 · Replace mocks in board + task detail |             |     |      |
 
 ### Week 12 · 2–7 Nov — Phase 2: states & config
 
@@ -167,58 +167,58 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 ### Week 13 · 9–14 Nov — Phase 3: auth backend
 
-| Date   | Day | Planned step                                | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------- | ----------- | --- | ---- |
-| 9 Nov  | Mon | P3.1 · bcrypt + register endpoint           |             |     |      |
-| 10 Nov | Tue | P3.2 · Login endpoint + JWT                 |             |     |      |
-| 11 Nov | Wed | P3.3 · HTTP-only cookie setup               |             |     |      |
-| 12 Nov | Thu | **Buffer** · office day                     |             |     |      |
-| 13 Nov | Fri | P3.4 · Auth middleware on protected routes  |             |     |      |
-| 14 Nov | Sat | P3.5–3.6 · `/me` endpoint + `AuthContext`   |             |     |      |
+| Date   | Day | Planned step                               | Actual step | Hrs | Note |
+| ------ | --- | ------------------------------------------ | ----------- | --- | ---- |
+| 9 Nov  | Mon | P3.1 · bcrypt + register endpoint          |             |     |      |
+| 10 Nov | Tue | P3.2 · Login endpoint + JWT                |             |     |      |
+| 11 Nov | Wed | P3.3 · HTTP-only cookie setup              |             |     |      |
+| 12 Nov | Thu | **Buffer** · office day                    |             |     |      |
+| 13 Nov | Fri | P3.4 · Auth middleware on protected routes |             |     |      |
+| 14 Nov | Sat | P3.5–3.6 · `/me` endpoint + `AuthContext`  |             |     |      |
 
 ### Week 14 · 16–21 Nov — Phase 3: auth frontend
 
-| Date   | Day | Planned step                                            | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------------------- | ----------- | --- | ---- |
-| 16 Nov | Mon | P3.7 · `useAuth` hook                                   |             |     |      |
-| 17 Nov | Tue | P3.8 · LoginPage real auth                              |             |     |      |
-| 18 Nov | Wed | P3.9 · RegisterPage real auth                           |             |     |      |
-| 19 Nov | Thu | **Buffer** · office day                                 |             |     |      |
-| 20 Nov | Fri | P3.10 · `ProtectedRoute` wrapping the layout route      |             |     |      |
-| 21 Nov | Sat | P3.11–3.14 · Redirect after login, logout, 401 refresh, roles |        |     |      |
+| Date   | Day | Planned step                                                  | Actual step | Hrs | Note |
+| ------ | --- | ------------------------------------------------------------- | ----------- | --- | ---- |
+| 16 Nov | Mon | P3.7 · `useAuth` hook                                         |             |     |      |
+| 17 Nov | Tue | P3.8 · LoginPage real auth                                    |             |     |      |
+| 18 Nov | Wed | P3.9 · RegisterPage real auth                                 |             |     |      |
+| 19 Nov | Thu | **Buffer** · office day                                       |             |     |      |
+| 20 Nov | Fri | P3.10 · `ProtectedRoute` wrapping the layout route            |             |     |      |
+| 21 Nov | Sat | P3.11–3.14 · Redirect after login, logout, 401 refresh, roles |             |     |      |
 
 ### Week 15 · 23–28 Nov — Phase 4: queries
 
-| Date   | Day | Planned step                              | Actual step | Hrs | Note |
-| ------ | --- | ----------------------------------------- | ----------- | --- | ---- |
-| 23 Nov | Mon | P4.1 · Install Query, provider, devtools  |             |     |      |
-| 24 Nov | Tue | P4.2 · Query key factory                  |             |     |      |
-| 25 Nov | Wed | P4.3 · `useProjects` + `useProject`       |             |     |      |
-| 26 Nov | Thu | **Buffer** · office day                   |             |     |      |
-| 27 Nov | Fri | P4.4 · `useTasks` query                   |             |     |      |
-| 28 Nov | Sat | P4.5 · `staleTime` / `gcTime` tuning      |             |     |      |
+| Date   | Day | Planned step                             | Actual step | Hrs | Note |
+| ------ | --- | ---------------------------------------- | ----------- | --- | ---- |
+| 23 Nov | Mon | P4.1 · Install Query, provider, devtools |             |     |      |
+| 24 Nov | Tue | P4.2 · Query key factory                 |             |     |      |
+| 25 Nov | Wed | P4.3 · `useProjects` + `useProject`      |             |     |      |
+| 26 Nov | Thu | **Buffer** · office day                  |             |     |      |
+| 27 Nov | Fri | P4.4 · `useTasks` query                  |             |     |      |
+| 28 Nov | Sat | P4.5 · `staleTime` / `gcTime` tuning     |             |     |      |
 
 ### Week 16 · 30 Nov – 5 Dec — Phase 4: mutations
 
-| Date   | Day | Planned step                                | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------- | ----------- | --- | ---- |
-| 30 Nov | Mon | P4.6 · Loading / error driven by Query      |             |     |      |
-| 1 Dec  | Tue | P4.7 · Delete all manual `useEffect` fetching |           |     |      |
-| 2 Dec  | Wed | P4.8 · `useCreateTask` mutation             |             |     |      |
-| 3 Dec  | Thu | **Buffer** · office day                     |             |     |      |
-| 4 Dec  | Fri | P4.9 · Cache invalidation                   |             |     |      |
-| 5 Dec  | Sat | P4.10 · `useUpdateTask` mutation            |             |     |      |
+| Date   | Day | Planned step                                  | Actual step | Hrs | Note |
+| ------ | --- | --------------------------------------------- | ----------- | --- | ---- |
+| 30 Nov | Mon | P4.6 · Loading / error driven by Query        |             |     |      |
+| 1 Dec  | Tue | P4.7 · Delete all manual `useEffect` fetching |             |     |      |
+| 2 Dec  | Wed | P4.8 · `useCreateTask` mutation               |             |     |      |
+| 3 Dec  | Thu | **Buffer** · office day                       |             |     |      |
+| 4 Dec  | Fri | P4.9 · Cache invalidation                     |             |     |      |
+| 5 Dec  | Sat | P4.10 · `useUpdateTask` mutation              |             |     |      |
 
 ### Week 17 · 7–12 Dec — Phase 4 finish → Phase 5 start
 
-| Date   | Day | Planned step                                     | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------------ | ----------- | --- | ---- |
-| 7 Dec  | Mon | P4.11 · Optimistic Kanban move                   |             |     |      |
-| 8 Dec  | Tue | P4.12 · Rollback on error                        |             |     |      |
-| 9 Dec  | Wed | P4.13 · Comments query + mutation                |             |     |      |
-| 10 Dec | Thu | **Buffer** · office day                          |             |     |      |
-| 11 Dec | Fri | P4 review · write the caching notes down         |             |     |      |
-| 12 Dec | Sat | P5.1–5.2 · Store setup + typed `useAppSelector`  |             |     |      |
+| Date   | Day | Planned step                                    | Actual step | Hrs | Note |
+| ------ | --- | ----------------------------------------------- | ----------- | --- | ---- |
+| 7 Dec  | Mon | P4.11 · Optimistic Kanban move                  |             |     |      |
+| 8 Dec  | Tue | P4.12 · Rollback on error                       |             |     |      |
+| 9 Dec  | Wed | P4.13 · Comments query + mutation               |             |     |      |
+| 10 Dec | Thu | **Buffer** · office day                         |             |     |      |
+| 11 Dec | Fri | P4 review · write the caching notes down        |             |     |      |
+| 12 Dec | Sat | P5.1–5.2 · Store setup + typed `useAppSelector` |             |     |      |
 
 ### Week 18 · 14–19 Dec — Phase 5: Redux slices
 
@@ -255,14 +255,14 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 ### Week 21 · 4–9 Jan 2027 — Phase 6: performance
 
-| Date  | Day | Planned step                                        | Actual step | Hrs | Note |
-| ----- | --- | --------------------------------------------------- | ----------- | --- | ---- |
-| 4 Jan | Mon | P6.5 · Route-level `errorElement`                   |             |     |      |
-| 5 Jan | Tue | P6.6 · Board boundary + deliberately break things   |             |     |      |
-| 6 Jan | Wed | P6.7 · Profiler baseline recording                  |             |     |      |
-| 7 Jan | Thu | **Buffer** · office day                             |             |     |      |
-| 8 Jan | Fri | P6.8 · Identify unnecessary re-renders              |             |     |      |
-| 9 Jan | Sat | P6.9–6.10 · `memo` on `TaskCard`, `useCallback`     |             |     |      |
+| Date  | Day | Planned step                                      | Actual step | Hrs | Note |
+| ----- | --- | ------------------------------------------------- | ----------- | --- | ---- |
+| 4 Jan | Mon | P6.5 · Route-level `errorElement`                 |             |     |      |
+| 5 Jan | Tue | P6.6 · Board boundary + deliberately break things |             |     |      |
+| 6 Jan | Wed | P6.7 · Profiler baseline recording                |             |     |      |
+| 7 Jan | Thu | **Buffer** · office day                           |             |     |      |
+| 8 Jan | Fri | P6.8 · Identify unnecessary re-renders            |             |     |      |
+| 9 Jan | Sat | P6.9–6.10 · `memo` on `TaskCard`, `useCallback`   |             |     |      |
 
 ### Week 22 · 11–16 Jan — Phase 6: skeletons & a11y
 
@@ -277,47 +277,47 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 ### Week 23 · 18–23 Jan — Phase 6 finish → Phase 7: testing
 
-| Date   | Day | Planned step                                       | Actual step | Hrs | Note |
-| ------ | --- | -------------------------------------------------- | ----------- | --- | ---- |
-| 18 Jan | Mon | P6.17 · ARIA roles + form label audit              |             |     |      |
-| 19 Jan | Tue | P6.18 · axe DevTools pass                          |             |     |      |
-| 20 Jan | Wed | P6.19 · Colour contrast + focus visibility fixes   |             |     |      |
-| 21 Jan | Thu | **Buffer** · office day                            |             |     |      |
-| 22 Jan | Fri | P7.1 · Vitest + React Testing Library setup        |             |     |      |
-| 23 Jan | Sat | P7.2–7.3 · `Button` test + form validation test    |             |     |      |
+| Date   | Day | Planned step                                     | Actual step | Hrs | Note |
+| ------ | --- | ------------------------------------------------ | ----------- | --- | ---- |
+| 18 Jan | Mon | P6.17 · ARIA roles + form label audit            |             |     |      |
+| 19 Jan | Tue | P6.18 · axe DevTools pass                        |             |     |      |
+| 20 Jan | Wed | P6.19 · Colour contrast + focus visibility fixes |             |     |      |
+| 21 Jan | Thu | **Buffer** · office day                          |             |     |      |
+| 22 Jan | Fri | P7.1 · Vitest + React Testing Library setup      |             |     |      |
+| 23 Jan | Sat | P7.2–7.3 · `Button` test + form validation test  |             |     |      |
 
 ### Week 24 · 25–30 Jan — Phase 7: testing & security
 
-| Date   | Day | Planned step                                  | Actual step | Hrs | Note |
-| ------ | --- | --------------------------------------------- | ----------- | --- | ---- |
-| 25 Jan | Mon | P7.4 · Custom hook test                       |             |     |      |
-| 26 Jan | Tue | P7.5 · Reducer test                           |             |     |      |
-| 27 Jan | Wed | P7.6 · MSW setup                              |             |     |      |
-| 28 Jan | Thu | **Buffer** · office day                       |             |     |      |
-| 29 Jan | Fri | P7.7 · Login → dashboard integration test     |             |     |      |
-| 30 Jan | Sat | P7.8–7.9 · Coverage gaps + XSS audit          |             |     |      |
+| Date   | Day | Planned step                              | Actual step | Hrs | Note |
+| ------ | --- | ----------------------------------------- | ----------- | --- | ---- |
+| 25 Jan | Mon | P7.4 · Custom hook test                   |             |     |      |
+| 26 Jan | Tue | P7.5 · Reducer test                       |             |     |      |
+| 27 Jan | Wed | P7.6 · MSW setup                          |             |     |      |
+| 28 Jan | Thu | **Buffer** · office day                   |             |     |      |
+| 29 Jan | Fri | P7.7 · Login → dashboard integration test |             |     |      |
+| 30 Jan | Sat | P7.8–7.9 · Coverage gaps + XSS audit      |             |     |      |
 
 ### Week 25 · 1–6 Feb — Phase 7 finish → Phase 8: deploy
 
-| Date  | Day | Planned step                                             | Actual step | Hrs | Note |
-| ----- | --- | -------------------------------------------------------- | ----------- | --- | ---- |
-| 1 Feb | Mon | P7.10 · CSRF protection                                  |             |     |      |
-| 2 Feb | Tue | P7.11 · Upload file type + size validation               |             |     |      |
-| 3 Feb | Wed | P7.12–7.14 · 401/429 UI, rate limiting, env var audit    |             |     |      |
-| 4 Feb | Thu | **Buffer** · office day                                  |             |     |      |
-| 5 Feb | Fri | P8.1 · Production build + local preview                  |             |     |      |
-| 6 Feb | Sat | P8.2 · Deploy API + MongoDB Atlas                        |             |     |      |
+| Date  | Day | Planned step                                          | Actual step | Hrs | Note |
+| ----- | --- | ----------------------------------------------------- | ----------- | --- | ---- |
+| 1 Feb | Mon | P7.10 · CSRF protection                               |             |     |      |
+| 2 Feb | Tue | P7.11 · Upload file type + size validation            |             |     |      |
+| 3 Feb | Wed | P7.12–7.14 · 401/429 UI, rate limiting, env var audit |             |     |      |
+| 4 Feb | Thu | **Buffer** · office day                               |             |     |      |
+| 5 Feb | Fri | P8.1 · Production build + local preview               |             |     |      |
+| 6 Feb | Sat | P8.2 · Deploy API + MongoDB Atlas                     |             |     |      |
 
 ### Week 26 · 8–13 Feb 2027 — Phase 8 finish + interview prep
 
-| Date   | Day | Planned step                                       | Actual step | Hrs | Note |
-| ------ | --- | -------------------------------------------------- | ----------- | --- | ---- |
-| 8 Feb  | Mon | P8.3 · Deploy frontend                             |             |     |      |
-| 9 Feb  | Tue | P8.4 · Production env vars + CORS                  |             |     |      |
-| 10 Feb | Wed | P8.5–8.6 · Seed demo account, README + diagram     |             |     |      |
-| 11 Feb | Thu | **Buffer** · office day                            |             |     |      |
-| 12 Feb | Fri | Fill the interview story bank + say it out loud    |             |     |      |
-| 13 Feb | Sat | Final polish + record a demo video                 |             |     |      |
+| Date   | Day | Planned step                                    | Actual step | Hrs | Note |
+| ------ | --- | ----------------------------------------------- | ----------- | --- | ---- |
+| 8 Feb  | Mon | P8.3 · Deploy frontend                          |             |     |      |
+| 9 Feb  | Tue | P8.4 · Production env vars + CORS               |             |     |      |
+| 10 Feb | Wed | P8.5–8.6 · Seed demo account, README + diagram  |             |     |      |
+| 11 Feb | Thu | **Buffer** · office day                         |             |     |      |
+| 12 Feb | Fri | Fill the interview story bank + say it out loud |             |     |      |
+| 13 Feb | Sat | Final polish + record a demo video              |             |     |      |
 
 **Stretch features** (drag and drop with `@dnd-kit`, notification dropdown, infinite scroll on activity) are **not scheduled**. Add them only if you finish early. They are the first thing to cut, never tests or accessibility.
 
@@ -384,34 +384,34 @@ Status values: `Not started` · `In progress` · `Done` · `Slipped`
 
 Update `Actual` every Saturday. `Cum. Planned` is fixed — it's your pace line.
 
-| Wk  | Dates (Mon–Sat)     | Focus                                            | Planned | Actual | Cum. Planned | Cum. Actual |
-| --- | ------------------- | ------------------------------------------------ | ------- | ------ | ------------ | ----------- |
-| 1   | 17–22 Aug 2026      | Setup, types, Button, Router                     | 10      |        | 10           |             |
-| 2   | 24–29 Aug           | Card, cn, tokens, EmptyState, projects list      | 10      |        | 20           |             |
-| 3   | 31 Aug – 5 Sep      | Type predicate, Badge, TaskCard, board start     | 8.5     |        | 28.5         |             |
-| 4   | 7–12 Sep            | Kanban moves, Avatar, config-driven columns      | 8.5     |        | 37           |             |
-| 5   | 14–19 Sep           | Input, LoginPage, validation, Modal              | 8.5     |        | 45.5         |             |
-| 6   | 21–26 Sep           | Dropdown, Create Task, Register, TaskPage        | 8.5     |        | 54           |             |
-| 7   | 28 Sep – 3 Oct      | Comments, activity, search start                 | 8.5     |        | 62.5         |             |
-| 8   | 5–10 Oct            | Filters, sort, debounce, dashboard, `useTasks`   | 8.5     |        | 71           |             |
-| 9   | 12–17 Oct           | Express + Mongo, models, endpoints               | 8.5     |        | 79.5         |             |
-| 10  | 19–24 Oct           | Comments API, seed, `http.ts` wrapper            | 8.5     |        | 88           |             |
-| 11  | 26–31 Oct           | API modules, replace mocks                       | 8.5     |        | 96.5         |             |
-| 12  | 2–7 Nov             | Loading/error/empty, AbortController, CORS       | 8.5     |        | 105          |             |
-| 13  | 9–14 Nov            | Register/login, JWT, cookies, auth context       | 8.5     |        | 113.5        |             |
-| 14  | 16–21 Nov           | `ProtectedRoute`, refresh, logout, roles         | 8.5     |        | 122          |             |
-| 15  | 23–28 Nov           | Query setup, keys, `staleTime`                   | 8.5     |        | 130.5        |             |
-| 16  | 30 Nov – 5 Dec      | Mutations, invalidation                          | 8.5     |        | 139          |             |
-| 17  | 7–12 Dec            | Optimistic move, rollback, RTK store             | 8.5     |        | 147.5        |             |
-| 18  | 14–19 Dec           | UI + theme slice, toasts                         | 8.5     |        | 156          |             |
-| 19  | 21–26 Dec           | Selectors, cleanup, Redux-vs-Query note          | 8.5     |        | 164.5        |             |
-| 20  | 28 Dec – 2 Jan 2027 | `React.lazy`, `Suspense`, error boundary         | 8.5     |        | 173          |             |
-| 21  | 4–9 Jan 2027        | `errorElement`, Profiler, `memo`                 | 8.5     |        | 181.5        |             |
-| 22  | 11–16 Jan           | Skeletons, focus trap, keyboard nav              | 8.5     |        | 190          |             |
-| 23  | 18–23 Jan           | ARIA audit, axe, Vitest + RTL setup              | 8.5     |        | 198.5        |             |
-| 24  | 25–30 Jan           | Hook/reducer tests, MSW, XSS audit               | 8.5     |        | 207          |             |
-| 25  | 1–6 Feb             | CSRF, uploads, rate limiting, deploy API         | 8.5     |        | 215.5        |             |
-| 26  | 8–13 Feb 2027       | Deploy frontend, README, interview prep          | 8.5     |        | 224          |             |
+| Wk  | Dates (Mon–Sat)     | Focus                                          | Planned | Actual | Cum. Planned | Cum. Actual |
+| --- | ------------------- | ---------------------------------------------- | ------- | ------ | ------------ | ----------- |
+| 1   | 17–22 Aug 2026      | Setup, types, Button, Router                   | 10      |        | 10           |             |
+| 2   | 24–29 Aug           | Card, cn, tokens, EmptyState, projects list    | 10      |        | 20           |             |
+| 3   | 31 Aug – 5 Sep      | Type predicate, Badge, TaskCard, board start   | 8.5     |        | 28.5         |             |
+| 4   | 7–12 Sep            | Kanban moves, Avatar, config-driven columns    | 8.5     |        | 37           |             |
+| 5   | 14–19 Sep           | Input, LoginPage, validation, Modal            | 8.5     |        | 45.5         |             |
+| 6   | 21–26 Sep           | Dropdown, Create Task, Register, TaskPage      | 8.5     |        | 54           |             |
+| 7   | 28 Sep – 3 Oct      | Comments, activity, search start               | 8.5     |        | 62.5         |             |
+| 8   | 5–10 Oct            | Filters, sort, debounce, dashboard, `useTasks` | 8.5     |        | 71           |             |
+| 9   | 12–17 Oct           | Express + Mongo, models, endpoints             | 8.5     |        | 79.5         |             |
+| 10  | 19–24 Oct           | Comments API, seed, `http.ts` wrapper          | 8.5     |        | 88           |             |
+| 11  | 26–31 Oct           | API modules, replace mocks                     | 8.5     |        | 96.5         |             |
+| 12  | 2–7 Nov             | Loading/error/empty, AbortController, CORS     | 8.5     |        | 105          |             |
+| 13  | 9–14 Nov            | Register/login, JWT, cookies, auth context     | 8.5     |        | 113.5        |             |
+| 14  | 16–21 Nov           | `ProtectedRoute`, refresh, logout, roles       | 8.5     |        | 122          |             |
+| 15  | 23–28 Nov           | Query setup, keys, `staleTime`                 | 8.5     |        | 130.5        |             |
+| 16  | 30 Nov – 5 Dec      | Mutations, invalidation                        | 8.5     |        | 139          |             |
+| 17  | 7–12 Dec            | Optimistic move, rollback, RTK store           | 8.5     |        | 147.5        |             |
+| 18  | 14–19 Dec           | UI + theme slice, toasts                       | 8.5     |        | 156          |             |
+| 19  | 21–26 Dec           | Selectors, cleanup, Redux-vs-Query note        | 8.5     |        | 164.5        |             |
+| 20  | 28 Dec – 2 Jan 2027 | `React.lazy`, `Suspense`, error boundary       | 8.5     |        | 173          |             |
+| 21  | 4–9 Jan 2027        | `errorElement`, Profiler, `memo`               | 8.5     |        | 181.5        |             |
+| 22  | 11–16 Jan           | Skeletons, focus trap, keyboard nav            | 8.5     |        | 190          |             |
+| 23  | 18–23 Jan           | ARIA audit, axe, Vitest + RTL setup            | 8.5     |        | 198.5        |             |
+| 24  | 25–30 Jan           | Hook/reducer tests, MSW, XSS audit             | 8.5     |        | 207          |             |
+| 25  | 1–6 Feb             | CSRF, uploads, rate limiting, deploy API       | 8.5     |        | 215.5        |             |
+| 26  | 8–13 Feb 2027       | Deploy frontend, README, interview prep        | 8.5     |        | 224          |             |
 
 **Reading the pace line:** within 5 hours of plan is fine. More than 10 hours behind means cut scope, not sleep — drop a stretch feature rather than skipping tests or accessibility.
 
@@ -426,7 +426,7 @@ Update `Actual` every Saturday. `Cum. Planned` is fixed — it's your pace line.
 - [x] S2 · `Button` component
 - [x] S3 · Router — `AppLayout`, `router.tsx`, `RouterProvider`, `useParams` guards
 - [x] S4.2–4.7 · `Card`, `cn`, design tokens, `EmptyState`, `ProjectCard`, projects list, project detail + owner join
-- [ ] S4.8 · Members list with a type predicate
+- [x] S4.8 · Members list with a type predicate
 - [ ] S5 · Kanban board with immutable status moves
 - [ ] S6 · Login form + Create Task modal
 - [ ] S7 · Task detail page + comments

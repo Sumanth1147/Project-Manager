@@ -23,4 +23,19 @@ export const mockUsers: User[] = [
     email: 'sanjeev@amd.com',
     role: 'member',
   },
+  {
+    id: 'u4',
+    name: 'Madhu',
+    email: 'madhu@amd.com',
+    avatarUrl: null,
+    role: 'member',
+  },
+
+  {
+    id: 'u5',
+    name: 'Kishore',
+    avatarUrl: null,
+    email: 'kishore@amd.com',
+    role: 'member',
+  },
 ]

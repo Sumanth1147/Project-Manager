@@ -13,6 +13,6 @@ export const mockProjects: Project[] = [
     name: 'vitis',
     description: 'a vitis project',
     ownerId: 'u1',
-    memberIds: ['u1', 'u2', 'u3'],
+    memberIds: ['u1', 'u4', 'u5'],
   },
 ]

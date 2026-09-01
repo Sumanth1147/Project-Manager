@@ -10,6 +10,7 @@
 ## Rendering & JSX
 
 - `&&` is safe for strings/objects, **dangerous for numbers**. `0 && <p/>` returns `0`, and React renders `0` on screen. Use `length > 0 &&` or a ternary.
+- **`&&` subtlety:** `condition && 'value'` returns the value or **`false`**, never `true` — that's why `cn()` types allow `false` and `filter(Boolean)` drops it.
 - React renders `undefined`, `null`, `false` as nothing — no DOM node, no warning.
 - **Guard when wrapping, don't guard when passing through.** `{message && <p>{message}</p>}` needs the guard (avoids an empty `<p>`); `{action}` does not.
 - JSX attribute value must be a quoted string or an expression in braces. `disabled=true` is a parse error; `disabled` alone means `true`.
@@ -31,6 +32,7 @@
 
 ## Component API design
 
+- **Inside a component:** hooks → guards → derived values → JSX. Lookups that need a guard (`project`) go before it; values that need the guarded object (`owner`, `members`) go after.
 - Pass the whole domain object (`project`), not three separate fields.
 - **Composition over configuration:** accept `action?: ReactNode` instead of `actionLabel` + `onActionClick`. Avoids the slide into `actionVariant`, `secondaryActionLabel`, …
 - Extend native props so consumers get `aria-*`, `title`, handlers for free:
@@ -82,6 +84,7 @@
 ## Normalized data
 
 - Store IDs (`ownerId`, `assigneeId`), not nested objects. Join at render time.
+- Resolve IDs to objects: `memberIds.map(id => users.find(u => u.id === id)).filter((u): u is User => u !== undefined)` — `find` returns `User | undefined`; the type predicate drops misses and narrows to `User[]`.
 - Why: one source of truth, no duplication, matches what APIs/DBs return.
 - Cost: lookups. `find` inside `map` is O(n×m) — fine for 3 users, build a `Map` at ~thousands.
 - Mock data must be referentially consistent, or you debug phantom `undefined`s.

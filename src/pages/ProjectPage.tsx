@@ -4,10 +4,11 @@ import { EmptyState } from '../components/EmptyState'
 import { mockUsers } from '../data/users'
 import { Card } from '../components/Card'
 import './ProjectPage.css'
+import type { User } from '../types/user'
 
 export function ProjectPage() {
   const { projectId } = useParams()
-  const project = mockProjects.find((user) => user.id === projectId)
+  const project = mockProjects.find((p) => p.id === projectId)
 
   if (!project) {
     return (
@@ -22,6 +23,9 @@ export function ProjectPage() {
   }
 
   const owner = mockUsers.find((user) => user.id === project.ownerId)
+  const members = project.memberIds
+    .map((id) => mockUsers.find((user) => user.id === id))
+    .filter((user): user is User => user !== undefined)
 
   return (
     <section className="page">
@@ -40,7 +44,13 @@ export function ProjectPage() {
 
           <div>
             <dt>Members</dt>
-            <dd>{project.memberIds.length}</dd>
+            <dd>
+              <ul className="project-detail-member-list">
+                {members.map((member) => (
+                  <li key={member.id}>{member.name}</li>
+                ))}
+              </ul>
+            </dd>
           </div>
         </dl>
       </Card>
