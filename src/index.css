@@ -31,7 +31,7 @@ body {
   min-height: 100svh;
 }
 
-/* 3. Dark-mode overrides when OS prefers dark */
+
 /* @media (prefers-color-scheme: dark) { */
 @media (prefers-color-scheme: light) {
   :root {
@@ -41,6 +41,15 @@ body {
     --surface: #1f2028;
     --border: #2e303a;
     --accent: #60a5fa;
+
+    --success: #15803d;
+    --success-bg: #dcfce7;
+    --warning: #a16207;
+    --warning-bg: #fef9c3;
+    --danger: #b91c1c;
+    --danger-bg: #fee2e2;
+    --info: #1d4ed8;
+    --info-bg: #dbeafe;
   }
 }
 

@@ -4,7 +4,6 @@ export const STATUS_LABELS: Record<TaskStatus, string> = {
   todo: 'To do',
   in_progress: 'In progress',
   done: 'Done',
-  
 }
 
 export const STATUS_ORDER: readonly TaskStatus[] = [
