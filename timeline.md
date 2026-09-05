@@ -28,19 +28,11 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 | Item                                                                    | Raised | Why it matters                                                                                                     |
 | ----------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
-| `index.css` dark-mode query is flipped to `prefers-color-scheme: light` | 29 Aug | Ships the theme backwards. Restore to `dark` and preview via DevTools → Rendering → Emulate `prefers-color-scheme` |
-| `find` callback in `ProjectPage` is named `user` but iterates projects  | 29 Aug | Misleading name; rename to `project`                                                                               |
 | Format-on-save not firing — Prettier run manually every time            | 25 Aug | Check the Prettier extension is installed/enabled; watch the "Prettier" Output panel on save                       |
+| Leftover commented-out `@media (prefers-color-scheme: dark)` line in `index.css` | 4 Sep | Dead comment above the working query — delete it |
 | Path aliases (`@/lib/cn`)                                               | —      | Do it when `../../../` starts hurting, around S6                                                                   |
 
-**Raised 2 Sep — needed to finish S5.1 `Badge`:**
-
-- `Badge.css` typo `var(--suurface)` (double `u`) — token doesn't exist, so `.badge-neutral` has no background
-- `Badge.css` variants don't match the union: union is `neutral/info/success/warning/danger`, CSS has `neutral/secondary/danger`. `info`, `success`, `warning` render unstyled; `secondary` is dead code copied from `Button`
-- `Badge.css` uses `display: flex` — a badge sits inline with text, so it should be `inline-flex`
-- `Badge` has no `index.ts` barrel; every other component folder has one
-- Semantic tokens (`--success`, `--warning`, `--danger`, `--info` + `-bg`) are defined **only inside the media query** — missing from the base `:root`, so they're undefined in the non-matching theme
-- `features/tasks/taskPriority.ts` is empty — needs `PRIORITY_LABELS` and a priority → `BadgeVariant` map mirroring `taskStatus.ts`
+_All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 1 · 17–22 Aug 2026 — Phase 1: setup → router
 
@@ -66,14 +58,16 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 
 ### Week 3 · 31 Aug – 5 Sep — Phase 1: Badge, TaskCard, board start
 
-| Date   | Day | Planned step                                 | Actual step                  | Hrs | Note                                                                                                                                                                                                                                                                                                                            |
-| ------ | --- | -------------------------------------------- | ---------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 31 Aug | Mon | S4.8 · Members list with a type predicate    | **S4.8 done · S5.1 started** |     | Members list via `(user): user is User` predicate. Dropped `require_review` → `TaskStatus` is 3 values; renamed `assignedId` → `assigneeId`. New `features/tasks/taskStatus.ts`: `STATUS_LABELS` (`Record<TaskStatus, string>`), `STATUS_ORDER`, `getNextStatus` / `getPreviousStatus`. `Badge` component itself not built yet. |
-| 1 Sep  | Tue | S5.1 · `Badge` component (status + priority) | **S5.1 in progress**                              |     |                                                                                                                                                                                                                                                                                                                                 |
-| 2 Sep  | Wed | S5.2 · `TaskCard` (feature component)        | **S5.1 still open · S5.2 not started**                              |     |                                                                                                                                                                                                                                                                                                                                 |
-| 3 Sep  | Thu | **Buffer** · office day                      |                              |     |                                                                                                                                                                                                                                                                                                                                 |
-| 4 Sep  | Fri | S5.3 · `KanbanColumn`                        |                              |     |                                                                                                                                                                                                                                                                                                                                 |
-| 5 Sep  | Sat | S5.4 · `KanbanBoard` + first real `useState` |                              |     |                                                                                                                                                                                                                                                                                                                                 |
+| Date   | Day | Planned step                                 | Actual step                            | Hrs | Note                                                                                                                                                                                                                                                                                                                            |
+| ------ | --- | -------------------------------------------- | -------------------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 31 Aug | Mon | S4.8 · Members list with a type predicate    | **S4.8 done · S5.1 started**           |     | Members list via `(user): user is User` predicate. Dropped `require_review` → `TaskStatus` is 3 values; renamed `assignedId` → `assigneeId`. New `features/tasks/taskStatus.ts`: `STATUS_LABELS` (`Record<TaskStatus, string>`), `STATUS_ORDER`, `getNextStatus` / `getPreviousStatus`. `Badge` component itself not built yet. |
+| 1 Sep  | Tue | S5.1 · `Badge` component (status + priority) | **S5.1 in progress**                   |     |                                                                                                                                                                                                                                                                                                                                 |
+| 2 Sep  | Wed | S5.2 · `TaskCard` (feature component)        | **S5.1 still open · S5.2 not started** |     |                                                                                                                                                                                                                                                                                                                                 |
+| 3 Sep  | Thu | **Buffer** · office day                      |                                        |     |                                                                                                                                                                                                                                                                                                                                 |
+| 4 Sep  | Fri | S5.3 · `KanbanColumn`                        | **S5.1–5.2 done**                                        |     |                                                                                                                                                                                                                                                                                                                                 |
+| 5 Sep  | Sat | S5.4 · `KanbanBoard` + first real `useState` |                                        |     |                                                                                                                                                                                                                                                                                                                                 |
+
+**4 Sep notes.** Finished `Badge`: added `index.ts` barrel, `inline-flex`, pill `border-radius: 999px`, all five variant rules (`neutral` uses `inset box-shadow` for its border), fixed the `--suurface` typo. Restored `index.css` media query to `prefers-color-scheme: dark` and moved the semantic tokens into the base `:root` with proper dark overrides. Wrote `taskPriority.ts` (`PRIORITY_LABELS` + `PRIORITY_BADGE_VARIANT` as `Record<TaskPriority, BadgeVariant>`). Built `TaskCard` — composes `Card` + `Badge` + two `Button`s, takes `task` / `assignee` / `onMove`, derives prev/next from `taskStatus.ts` and disables the arrows at the ends, `aria-label` on both buttons. **S5.3 `KanbanColumn` and S5.4 `KanbanBoard` are not started** — no Kanban files and no `useState` anywhere in `src` yet.
 
 ### Week 4 · 7–12 Sep — Phase 1: Kanban board
 
@@ -448,7 +442,7 @@ Update `Actual` every Saturday. `Cum. Planned` is fixed — it's your pace line.
 - [x] `Button`
 - [x] `Card`
 - [x] `EmptyState`
-- [ ] `Badge`
+- [x] `Badge`
 - [ ] `Avatar`
 - [ ] `Spinner`
 - [ ] `Input`

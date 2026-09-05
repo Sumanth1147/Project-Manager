@@ -14,7 +14,7 @@
   background-color: var(--surface);
   box-shadow: inset 0 0 0 1px var(--border);
 }
-  
+
 .badge-info {
   color: var(--info);
   background-color: var(--info-bg);

@@ -29,6 +29,7 @@
 - Prefer the library's exported types (`NavLinkRenderProps`) over hand-written structural annotations.
 - Extract a named type alias as soon as a union repeats or gets long.
 - `tsc` passing means types are **consistent**, not that code is **correct**.
+- **Same-signature blind spot:** functions with the same parameter types (e.g. both `(status: TaskStatus) => string`) compile even if you pass the wrong one — TypeScript can't tell them apart. Defense: name functions clearly (`getStatusLabel` vs `getPriorityLabel`) and call the right one deliberately; types alone won't catch a swapped helper.
 
 ## Component API design
 
@@ -37,6 +38,7 @@
 - **Composition over configuration:** accept `action?: ReactNode` instead of `actionLabel` + `onActionClick`. Avoids the slide into `actionVariant`, `secondaryActionLabel`, …
 - Extend native props so consumers get `aria-*`, `title`, handlers for free:
   `interface ButtonProps extends ComponentProps<'button'> { variant?: ButtonVariant }`
+- **Concrete payoff:** `extends ComponentProps<'button'>` lets callers pass `aria-label` (and any native button attr) without you adding a prop for each one — `{...rest}` forwards it to the DOM.
 - **Override vs merge** decides prop-spread order:
   - `type` only needs overriding → placing it before `{...rest}` is enough
   - `className` needs merging → must be destructured out and combined manually
