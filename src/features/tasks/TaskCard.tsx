@@ -15,7 +15,7 @@ interface TaskCardProps {
 
 export function TaskCard({ task, assignee, onMove }: TaskCardProps) {
   const nextStatus = getNextStatus(task.status)
-  const  previousStatus = getPreviousStatus(task.status)
+  const previousStatus = getPreviousStatus(task.status)
 
   const handleMove = (status: TaskStatus | null) => {
     if (status === null) {

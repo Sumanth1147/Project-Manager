@@ -26,11 +26,11 @@
 
 Small fixes that came out of a review but don't belong to a step. Clear these on a buffer day or at the start of a session. Delete the line when done.
 
-| Item                                                                    | Raised | Why it matters                                                                                                     |
-| ----------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------ |
-| Format-on-save not firing — Prettier run manually every time            | 25 Aug | Check the Prettier extension is installed/enabled; watch the "Prettier" Output panel on save                       |
-| Leftover commented-out `@media (prefers-color-scheme: dark)` line in `index.css` | 4 Sep | Dead comment above the working query — delete it |
-| Path aliases (`@/lib/cn`)                                               | —      | Do it when `../../../` starts hurting, around S6                                                                   |
+| Item                                                                             | Raised | Why it matters                                                                               |
+| -------------------------------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------- |
+| Format-on-save not firing — Prettier run manually every time                     | 25 Aug | Check the Prettier extension is installed/enabled; watch the "Prettier" Output panel on save |
+| Leftover commented-out `@media (prefers-color-scheme: dark)` line in `index.css` | 4 Sep  | Dead comment above the working query — delete it                                             |
+| Path aliases (`@/lib/cn`)                                                        | —      | Do it when `../../../` starts hurting, around S6                                             |
 
 _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
@@ -64,21 +64,23 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 | 1 Sep  | Tue | S5.1 · `Badge` component (status + priority) | **S5.1 in progress**                   |     |                                                                                                                                                                                                                                                                                                                                 |
 | 2 Sep  | Wed | S5.2 · `TaskCard` (feature component)        | **S5.1 still open · S5.2 not started** |     |                                                                                                                                                                                                                                                                                                                                 |
 | 3 Sep  | Thu | **Buffer** · office day                      |                                        |     |                                                                                                                                                                                                                                                                                                                                 |
-| 4 Sep  | Fri | S5.3 · `KanbanColumn`                        | **S5.1–5.2 done**                                        |     |                                                                                                                                                                                                                                                                                                                                 |
-| 5 Sep  | Sat | S5.4 · `KanbanBoard` + first real `useState` |                                        |     |                                                                                                                                                                                                                                                                                                                                 |
+| 4 Sep  | Fri | S5.3 · `KanbanColumn`                        | **S5.1–5.2 done**                      |     |                                                                                                                                                                                                                                                                                                                                 |
+| 5 Sep  | Sat | S5.4 · `KanbanBoard` + first real `useState` | **S5.3–5.5 done · ahead of plan**      |     |                                                                                                                                                                                                                                                                                                                                 |
 
 **4 Sep notes.** Finished `Badge`: added `index.ts` barrel, `inline-flex`, pill `border-radius: 999px`, all five variant rules (`neutral` uses `inset box-shadow` for its border), fixed the `--suurface` typo. Restored `index.css` media query to `prefers-color-scheme: dark` and moved the semantic tokens into the base `:root` with proper dark overrides. Wrote `taskPriority.ts` (`PRIORITY_LABELS` + `PRIORITY_BADGE_VARIANT` as `Record<TaskPriority, BadgeVariant>`). Built `TaskCard` — composes `Card` + `Badge` + two `Button`s, takes `task` / `assignee` / `onMove`, derives prev/next from `taskStatus.ts` and disables the arrows at the ends, `aria-label` on both buttons. **S5.3 `KanbanColumn` and S5.4 `KanbanBoard` are not started** — no Kanban files and no `useState` anywhere in `src` yet.
 
+**5 Sep notes.** `KanbanColumn`, `KanbanBoard` with the first real `useState`, and the immutable move between columns — S5.3, S5.4 and S5.5 all done in one session. S5.5 was planned for Mon 7 Sep, so Week 4 starts one step ahead. (Recorded as reported, not verified against the code.)
+
 ### Week 4 · 7–12 Sep — Phase 1: Kanban board
 
-| Date   | Day | Planned step                                        | Actual step | Hrs | Note |
-| ------ | --- | --------------------------------------------------- | ----------- | --- | ---- |
-| 7 Sep  | Mon | S5.5 · Move task between columns **immutably**      |             |     |      |
-| 8 Sep  | Tue | S5.6 · `Avatar` + assignee on card                  |             |     |      |
-| 9 Sep  | Wed | S5.7 · Board layout (4 columns, horizontal scroll)  |             |     |      |
-| 10 Sep | Thu | **Buffer** · office day                             |             |     |      |
-| 11 Sep | Fri | S5.8 · Derive columns from a config array           |             |     |      |
-| 12 Sep | Sat | S5.9 · `Spinner` + fake delay so loading UI is real |             |     |      |
+| Date   | Day | Planned step                                        | Actual step | Hrs | Note                                                       |
+| ------ | --- | --------------------------------------------------- | ----------- | --- | ---------------------------------------------------------- |
+| 7 Sep  | Mon | S5.5 · Move task between columns **immutably**      |             |     | Free slot — pull S5.6 forward or clear carry-forward items |
+| 8 Sep  | Tue | S5.6 · `Avatar` + assignee on card                  | **S5.6 done** |     |                                                            |
+| 9 Sep  | Wed | S5.7 · Board layout (4 columns, horizontal scroll)  |             |     |                                                            |
+| 10 Sep | Thu | **Buffer** · office day                             |             |     |                                                            |
+| 11 Sep | Fri | S5.8 · Derive columns from a config array           |             |     |                                                            |
+| 12 Sep | Sat | S5.9 · `Spinner` + fake delay so loading UI is real |             |     |                                                            |
 
 ### Week 5 · 14–19 Sep — Phase 1: forms
 

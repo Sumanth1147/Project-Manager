@@ -5,6 +5,7 @@ import { mockUsers } from '../data/users'
 import { Card } from '../components/Card'
 import './ProjectPage.css'
 import type { User } from '../types/user'
+import { KanbanBoard } from '../features/tasks/KanbanBoard'
 
 export function ProjectPage() {
   const { projectId } = useParams()
@@ -54,6 +55,8 @@ export function ProjectPage() {
           </div>
         </dl>
       </Card>
+
+      <KanbanBoard key={project.id} projectId={project.id} />
     </section>
   )
 }

@@ -24,7 +24,7 @@
 
 .btn-secondary {
   background-color: var(--surface);
-  color: white;
+  color: var(--text);
   border-color: var(--border);
 }
 
