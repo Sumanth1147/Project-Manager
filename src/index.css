@@ -78,3 +78,15 @@ body {
   margin: 0;
   color: var(--text-heading);
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0px;
+  overflow: hidden;
+  clip-path: insert(50%);
+  border: 0;
+  white-space: nowrap;
+}

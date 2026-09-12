@@ -1,0 +1,25 @@
+
+.spinner {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spinner-rotate 0.7s linear infinite;
+}
+
+@keyframes spinner-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@media (prefer-reduced-motion: reduce) {
+    .spinner {
+        animation-duration: 2s;
+    }
+}

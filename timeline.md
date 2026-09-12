@@ -73,14 +73,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 4 · 7–12 Sep — Phase 1: Kanban board
 
-| Date   | Day | Planned step                                        | Actual step | Hrs | Note                                                       |
-| ------ | --- | --------------------------------------------------- | ----------- | --- | ---------------------------------------------------------- |
-| 7 Sep  | Mon | S5.5 · Move task between columns **immutably**      |             |     | Free slot — pull S5.6 forward or clear carry-forward items |
+| Date   | Day | Planned step                                        | Actual step   | Hrs | Note                                                       |
+| ------ | --- | --------------------------------------------------- | ------------- | --- | ---------------------------------------------------------- |
+| 7 Sep  | Mon | S5.5 · Move task between columns **immutably**      |               |     | Free slot — pull S5.6 forward or clear carry-forward items |
 | 8 Sep  | Tue | S5.6 · `Avatar` + assignee on card                  | **S5.6 done** |     |                                                            |
-| 9 Sep  | Wed | S5.7 · Board layout (4 columns, horizontal scroll)  |             |     |                                                            |
-| 10 Sep | Thu | **Buffer** · office day                             |             |     |                                                            |
-| 11 Sep | Fri | S5.8 · Derive columns from a config array           |             |     |                                                            |
-| 12 Sep | Sat | S5.9 · `Spinner` + fake delay so loading UI is real |             |     |                                                            |
+| 9 Sep  | Wed | S5.7 · Board layout                                 |               |     |                                                            |
+| 10 Sep | Thu | **Buffer** · office day                             |               |     |                                                            |
+| 11 Sep | Fri | S5.8 · Derive columns from a config array           |               |     |                                                            |
+| 12 Sep | Sat | S5.9 · `Spinner` + fake delay so loading UI is real |               |     |                                                            |
 
 ### Week 5 · 14–19 Sep — Phase 1: forms
 

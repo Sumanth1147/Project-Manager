@@ -6,6 +6,7 @@ import type { User } from '../../types/user'
 import { PRIORITY_BADGE_VARIANT, PRIORITY_LABELS } from './taskPriority'
 import { getNextStatus, getPreviousStatus } from './taskStatus'
 import './TaskCard.css'
+import { Avatar } from '../../components/Avatar'
 
 interface TaskCardProps {
   task: Task
@@ -38,7 +39,19 @@ export function TaskCard({ task, assignee, onMove }: TaskCardProps) {
 
       <footer className="task-card-footer">
         <span className="task-card-assignee">
-          {assignee?.name ?? 'Unassigned'}
+          {assignee === null ? (
+            'Unassigned'
+          ) : (
+            <>
+              <Avatar
+                name={assignee.name}
+                src={assignee.avatarUrl}
+                size="md"
+                aria-hidden="true"
+              />
+              {assignee.name}
+            </>
+          )}
         </span>
 
         <div className="task-card-actions">

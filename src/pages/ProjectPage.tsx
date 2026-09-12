@@ -6,6 +6,7 @@ import { Card } from '../components/Card'
 import './ProjectPage.css'
 import type { User } from '../types/user'
 import { KanbanBoard } from '../features/tasks/KanbanBoard'
+import { Avatar } from '../components/Avatar'
 
 export function ProjectPage() {
   const { projectId } = useParams()
@@ -48,7 +49,15 @@ export function ProjectPage() {
             <dd>
               <ul className="project-detail-member-list">
                 {members.map((member) => (
-                  <li key={member.id}>{member.name}</li>
+                  <li key={member.id} className="project-detail-member">
+                    <Avatar
+                      name={member.name}
+                      src={member.avatarUrl}
+                      size="sm"
+                      aria-hidden="true"
+                    />
+                    {member.name}
+                  </li>
                 ))}
               </ul>
             </dd>
