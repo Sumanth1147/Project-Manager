@@ -41,7 +41,6 @@ body {
   min-height: 100svh;
 }
 
-/* @media (prefers-color-scheme: dark) { */
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
@@ -86,7 +85,7 @@ body {
   margin: -1px;
   padding: 0px;
   overflow: hidden;
-  clip-path: insert(50%);
+  clip-path: inset(50%);
   border: 0;
   white-space: nowrap;
 }

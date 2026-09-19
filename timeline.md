@@ -86,7 +86,7 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 | Date   | Day | Planned step                                    | Actual step | Hrs | Note |
 | ------ | --- | ----------------------------------------------- | ----------- | --- | ---- |
-| 14 Sep | Mon | S6.1 · `Input` component (label, error, id)     |             |     |      |
+| 14 Sep | Mon | S6.1 · `Input` component (label, error, id)     | **S6.1 done** |     |      |
 | 15 Sep | Tue | S6.2 · LoginPage controlled inputs              |             |     |      |
 | 16 Sep | Wed | S6.3 · Validation + error display               |             |     |      |
 | 17 Sep | Thu | **Buffer** · office day                         |             |     |      |
