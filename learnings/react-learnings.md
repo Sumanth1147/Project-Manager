@@ -19,3 +19,9 @@
   - disable the button conditionally
   - derive anything else from it
 - None of that exists if the value only lives in the DOM.
+
+## `forwardRef`
+
+- Before React 19, `ref` was not an ordinary prop on function components — React intercepted it, so you wrapped the component in `forwardRef`.
+- React 19: pass `ref` like any other prop. Skip `forwardRef` on new components.
+- Older tutorials/SO still show `forwardRef` — that’s the workaround, not the current API.

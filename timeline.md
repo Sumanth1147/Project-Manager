@@ -84,14 +84,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 5 · 14–19 Sep — Phase 1: forms
 
-| Date   | Day | Planned step                                    | Actual step | Hrs | Note |
-| ------ | --- | ----------------------------------------------- | ----------- | --- | ---- |
+| Date   | Day | Planned step                                    | Actual step   | Hrs | Note |
+| ------ | --- | ----------------------------------------------- | ------------- | --- | ---- |
 | 14 Sep | Mon | S6.1 · `Input` component (label, error, id)     | **S6.1 done** |     |      |
-| 15 Sep | Tue | S6.2 · LoginPage controlled inputs              |             |     |      |
-| 16 Sep | Wed | S6.3 · Validation + error display               |             |     |      |
-| 17 Sep | Thu | **Buffer** · office day                         |             |     |      |
-| 18 Sep | Fri | S6.4 · Fake auth, `useNavigate`, `localStorage` |             |     |      |
-| 19 Sep | Sat | S6.5 · `Modal` component                        |             |     |      |
+| 15 Sep | Tue | S6.2 · LoginPage controlled inputs              |               |     |      |
+| 16 Sep | Wed | S6.3 · Validation + error display               |               |     |      |
+| 17 Sep | Thu | **Buffer** · office day                         |               |     |      |
+| 18 Sep | Fri | S6.4 · Fake auth, `useNavigate`, `localStorage` |               |     |      |
+| 19 Sep | Sat | S6.5 · `Modal` component                        |               |     |      |
 
 ### Week 6 · 21–26 Sep — Phase 1: create task, register
 
@@ -566,3 +566,42 @@ Fill one line as soon as you finish the relevant phase, while it's fresh. This i
 6. **Keep the dev server terminal visible.** A parse error already cost you an hour once — a failed HMR update means the browser is running stale code.
 7. **Run `npm run format` before you stop for the day.** It keeps reviews about logic, not whitespace.
 8. **If a week slips, cut scope, not quality.** Drop a stretch feature, never the tests.
+
+---
+
+## Phase Schedule
+
+Derived from the [Daily Step Tracker](#daily-step-tracker). Boundaries follow the actual first and last planned step of each phase, so several phases hand over mid-week rather than on a week boundary.
+
+**Working days** counts only days with real planned work — Thursdays (buffer from 3 Sep), Sundays (DSA), and the two holidays are excluded.
+
+| #   | Phase                                  | Start           | End             | Calendar span | Working days | Planned h |
+| --- | -------------------------------------- | --------------- | --------------- | ------------- | ------------ | --------- |
+| 1   | Foundation (UI + routing + mock data)  | Mon 17 Aug 2026 | Sat 10 Oct 2026 | 55 days       | 42           | 71        |
+| 2   | Real API (Express + Mongo + API layer) | Mon 12 Oct 2026 | Sat 7 Nov 2026  | 27 days       | 20           | 34        |
+| 3   | Authentication & roles                 | Mon 9 Nov 2026  | Sat 21 Nov 2026 | 13 days       | 10           | 17        |
+| 4   | TanStack Query                         | Mon 23 Nov 2026 | Fri 11 Dec 2026 | 19 days       | 14           | 22.5      |
+| 5   | Redux Toolkit (client state)           | Sat 12 Dec 2026 | Sat 26 Dec 2026 | 15 days       | 10           | 19        |
+| 6   | Optimization & resilience              | Mon 28 Dec 2026 | Wed 20 Jan 2027 | 24 days       | 17           | 29        |
+| 7   | Security & testing                     | Fri 22 Jan 2027 | Wed 3 Feb 2027  | 13 days       | 10           | 17        |
+| 8   | Deploy & present                       | Fri 5 Feb 2027  | Wed 10 Feb 2027 | 6 days        | 5            | 8.5       |
+| —   | Interview prep                         | Fri 12 Feb 2027 | Sat 13 Feb 2027 | 2 days        | 2            | 4         |
+|     | **Total**                              | **17 Aug 2026** | **13 Feb 2027** | **181 days**  | **130**      | **222**   |
+
+### Notes on the numbers
+
+- **130 working days** out of 181 calendar days. You work about 5 days in 7, so roughly 28% of the elapsed time is Sundays and Thursdays.
+- **Phase 1 is a third of the whole project** — 42 of 130 days. That's deliberate: fundamentals are what interviews probe hardest.
+- **Four phases hand over mid-week.** Phase 4 ends Fri 11 Dec and Phase 5 starts the next day; Phase 6 ends Wed 20 Jan and Phase 7 starts Fri 22 Jan (Thursday buffer in between); Phase 7 ends Wed 3 Feb and Phase 8 starts Fri 5 Feb. Week 17, 23 and 25 each straddle two phases.
+- **Planned hours total 222, not 224.** The [Week Tracker](#week-tracker) charges a flat 8.5 h to weeks 19 and 20, but Fri 25 Dec and Fri 1 Jan are marked _Holiday — skip_ at 1.0 h each. The `Cum. Planned` pace line is therefore 2 hours optimistic by the end. Not worth restructuring — just know the last column overstates slightly.
+- **Per-phase hours differ from the [Progress Dashboard](#progress-dashboard)** for phases 4–6, because the Dashboard allocates by whole week blocks (`W15–W17`) while this table splits at the real mid-week handoffs. Both totals are internally consistent; this one is the more accurate view of when each phase actually starts and ends.
+
+### Shortest path if you fall behind
+
+If the schedule slips badly, these are the phases to compress, in order:
+
+1. **Phase 6 (29 h)** — keep `React.lazy`, `Suspense` and one error boundary; drop skeletons and keyboard nav
+2. **Phase 5 (19 h)** — Redux is the least essential given Query already owns server state; a theme slice alone still earns the interview answer
+3. **Phase 7 (17 h)** — cut test breadth, but never cut testing to zero
+
+Never compress Phases 1, 2 or 3. They are what every interview actually asks about.
