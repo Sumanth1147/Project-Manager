@@ -25,3 +25,9 @@
 - Before React 19, `ref` was not an ordinary prop on function components — React intercepted it, so you wrapped the component in `forwardRef`.
 - React 19: pass `ref` like any other prop. Skip `forwardRef` on new components.
 - Older tutorials/SO still show `forwardRef` — that’s the workaround, not the current API.
+
+## `createPortal`
+
+- Renders DOM elsewhere (usually `document.body`) while the component stays in the React tree you wrote.
+- DOM tree and React tree diverge: context still flows down; React events still bubble to the React parent even though the node is a sibling of `#root`.
+- So an ancestor `onClick` still fires for clicks inside the portal.

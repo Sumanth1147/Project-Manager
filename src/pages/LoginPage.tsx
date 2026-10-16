@@ -8,15 +8,22 @@ import { Input } from '../components/Input'
 import { Button } from '../components/Button'
 import './LoginPage.css'
 import { validateLogin, type LoginErrors } from '../features/auth/validateLogin'
+import { useNavigate } from 'react-router-dom'
+import { fakeLogin, saveSession } from '../features/auth/fakeAuth'
 
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<LoginErrors>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formError, setFormError] = useState('')
+
   const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
+  const navigate = useNavigate()
 
-  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = async (event) => {
+    setFormError('')
     event.preventDefault()
     const nextErrors = validateLogin({ email, password })
     setErrors(nextErrors)
@@ -31,7 +38,18 @@ export function LoginPage() {
       return
     }
 
-    console.log({ email, password })
+    setIsSubmitting(true)
+    const user = await fakeLogin(email, password)
+    setIsSubmitting(false)
+
+    if (!user) {
+      setFormError('Email or password is incorrect')
+      emailRef.current?.focus()
+      return
+    }
+
+    saveSession(user.id)
+    navigate('/dashboard', { replace: true })
   }
 
   // Input onChange is ChangeEvent<HTMLInputElement>, not the form
@@ -44,8 +62,8 @@ export function LoginPage() {
   }
 
   return (
-    <section className="page login-page">
-      <header className="page-header">
+    <section className="login-page">
+      <header className="login-page-header">
         <h2>Log in</h2>
       </header>
 
@@ -72,9 +90,15 @@ export function LoginPage() {
           ref={passwordRef}
         />
 
+        {formError && (
+          <p className="login-error" role="alert">
+            {formError}
+          </p>
+        )}
+
         {/* Button defaults to type="button", so submit has to be explicit */}
-        <Button type="submit" className="login-submit">
-          Log In
+        <Button type="submit" className="login-submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Logging In...' : 'Log In'}
         </Button>
       </form>
     </section>
