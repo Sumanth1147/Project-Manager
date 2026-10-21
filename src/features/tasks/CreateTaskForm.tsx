@@ -141,7 +141,7 @@ export function CreateTaskForm({ onSubmit, onCancel }: CreateTaskFormProps) {
 
       <Select
         label="Assignee"
-        name="assignee"
+        name="assigneeId"
         value={values.assigneeId}
         options={assigneeOptions}
         onChange={handleChange}

@@ -106,14 +106,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 7 · 28 Sep – 3 Oct — Phase 1: task detail & comments
 
-| Date   | Day | Planned step                                  | Actual step   | Hrs | Note |
-| ------ | --- | --------------------------------------------- | ------------- | --- | ---- |
-| 28 Sep | Mon | S7.2 · `Comment` type + mock data             |               |     |      |
-| 29 Sep | Tue | S7.3 · Comment list rendering                 | **S6.4 done** |     |      |
-| 30 Sep | Wed | S7.4 · Add comment form                       |               |     |      |
-| 1 Oct  | Thu | **Buffer** · office day                       |               |     |      |
-| 2 Oct  | Fri | S7.5 · Task activity / history list           |               |     |      |
-| 3 Oct  | Sat | S8.1–8.2 · Search input + `useMemo` filtering |               |     |      |
+| Date   | Day | Planned step                                  | Actual step | Hrs | Note |
+| ------ | --- | --------------------------------------------- | ----------- | --- | ---- |
+| 28 Sep | Mon | S7.2 · `Comment` type + mock data             |             |     |      |
+| 29 Sep | Tue | S7.3 · Comment list rendering                 |             |     |      |
+| 30 Sep | Wed | S7.4 · Add comment form                       |             |     |      |
+| 1 Oct  | Thu | **Buffer** · office day                       |             |     |      |
+| 2 Oct  | Fri | S7.5 · Task activity / history list           |             |     |      |
+| 3 Oct  | Sat | S8.1–8.2 · Search input + `useMemo` filtering |             |     |      |
 
 ### Week 8 · 5–10 Oct — Phase 1: filters, dashboard, cleanup
 

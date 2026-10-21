@@ -7,10 +7,14 @@ import './ProjectPage.css'
 import type { User } from '../types/user'
 import { KanbanBoard } from '../features/tasks/KanbanBoard'
 import { Avatar } from '../components/Avatar'
+import { useState } from 'react'
+import { Modal } from '../components/Modal'
+import { CreateTaskForm } from '../features/tasks/CreateTaskForm'
 
 export function ProjectPage() {
   const { projectId } = useParams()
   const project = mockProjects.find((p) => p.id === projectId)
+  const [isCreateOpen, setIsCreateOpen] = useState<boolean>(false)
 
   if (!project) {
     return (
@@ -33,7 +37,22 @@ export function ProjectPage() {
     <section className="page">
       <header className="page-header">
         <h2>{project.name}</h2>
-
+        <button onClick={() => setIsCreateOpen(true)}>Create Task</button>
+        {isCreateOpen && (
+          <Modal
+            isOpen={isCreateOpen}
+            onClose={() => setIsCreateOpen(false)}
+            title="New Task"
+          >
+            <CreateTaskForm
+              onSubmit={(values) => {
+                console.log(values)
+                setIsCreateOpen(false)
+              }}
+              onCancel={() => setIsCreateOpen(false)}
+            />
+          </Modal>
+        )}
         <Link to="/projects">Back to Projects</Link>
       </header>
 
