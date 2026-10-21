@@ -33,6 +33,7 @@ export function ProjectPage() {
     <section className="page">
       <header className="page-header">
         <h2>{project.name}</h2>
+
         <Link to="/projects">Back to Projects</Link>
       </header>
 

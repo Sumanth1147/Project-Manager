@@ -91,7 +91,7 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 | 16 Sep | Wed | S6.3 · Validation + error display               |               |     |      |
 | 17 Sep | Thu | **Buffer** · office day                         |               |     |      |
 | 18 Sep | Fri | S6.4 · Fake auth, `useNavigate`, `localStorage` |               |     |      |
-| 19 Sep | Sat | S6.5 · `Modal` component                        |               |     |      |
+| 19 Sep | Sat | S6.5 · `Modal` component                        | **S6.5 done** |     |      |
 
 ### Week 6 · 21–26 Sep — Phase 1: create task, register
 
