@@ -1,4 +1,4 @@
-import { useId, type ComponentProps } from 'react'
+import { useId, type ComponentProps, type ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 import './Input.css'
 
@@ -6,6 +6,8 @@ interface InputProps extends ComponentProps<'input'> {
   label: string
   error?: string
   hint?: string
+  // Slot for a control sitting inside the input, at the right end
+  trailing?: ReactNode
 }
 
 export function Input({
@@ -14,6 +16,7 @@ export function Input({
   hint,
   id,
   className,
+  trailing,
   ...rest
 }: InputProps) {
   const generatedId = useId()
@@ -33,13 +36,21 @@ export function Input({
           {hint}
         </p>
       )}
-      <input
-        id={inputId}
-        className={cn('input', error && 'input-invalid', className)}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={describedBy}
-        {...rest}
-      />
+      <div className="input-control">
+        <input
+          id={inputId}
+          className={cn(
+            'input',
+            error && 'input-invalid',
+            trailing ? 'input-has-trailing' : undefined,
+            className,
+          )}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={describedBy}
+          {...rest}
+        />
+        {trailing}
+      </div>
 
       {error && (
         <p className="input-error" id={errorId}>

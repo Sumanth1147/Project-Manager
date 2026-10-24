@@ -24,6 +24,32 @@ export function fakeLogin(
   })
 }
 
+// Not a field rule - needs a lookup against existing accounts
+export function isEmailTaken(email: string): boolean {
+  return mockUsers.some(
+    (user) => user.email.toLowerCase() === email.trim().toLowerCase(),
+  )
+}
+
+export function fakeRegister(name: string, email: string): Promise<User> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const user: User = {
+        id: crypto.randomUUID(),
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        avatarUrl: null,
+        role: 'member',
+      }
+
+      // Mutating mock data on purpose - stands in for a server insert.
+      // The password is deliberately not stored anywhere.
+      mockUsers.push(user)
+      resolve(user)
+    }, FAKE_DELAY)
+  })
+}
+
 export function saveSession(userId: string): void {
   localStorage.setItem(SESSION_KEY, userId)
 }

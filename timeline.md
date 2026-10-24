@@ -95,14 +95,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 6 · 21–26 Sep — Phase 1: create task, register
 
-| Date   | Day | Planned step                                | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------- | ----------- | --- | ---- |
-| 21 Sep | Mon | S6.6 · `Dropdown` component                 |             |     |      |
-| 22 Sep | Tue | S6.7 · Create Task form (fields + state)    |             |     |      |
-| 23 Sep | Wed | S6.8 · Create Task submit + append to board |             |     |      |
-| 24 Sep | Thu | **Buffer** · office day                     |             |     |      |
-| 25 Sep | Fri | S6.9 · RegisterPage                         |             |     |      |
-| 26 Sep | Sat | S7.1 · TaskPage detail view                 |             |     |      |
+| Date   | Day | Planned step                                | Actual step   | Hrs | Note |
+| ------ | --- | ------------------------------------------- | ------------- | --- | ---- |
+| 21 Sep | Mon | S6.6 · `Dropdown` component                 |               |     |      |
+| 22 Sep | Tue | S6.7 · Create Task form (fields + state)    |               |     |      |
+| 23 Sep | Wed | S6.8 · Create Task submit + append to board | **S6.8 done** |     |      |
+| 24 Sep | Thu | **Buffer** · office day                     |               |     |      |
+| 25 Sep | Fri | S6.9 · RegisterPage                         |               |     |      |
+| 26 Sep | Sat | S7.1 · TaskPage detail view                 |               |     |      |
 
 ### Week 7 · 28 Sep – 3 Oct — Phase 1: task detail & comments
 

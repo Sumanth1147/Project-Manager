@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-import { mockTasks } from '../../data/tasks'
 import type { Task, TaskStatus } from '../../types/task'
 import { KanbanColumn } from './KanbanColumn'
 import { STATUS_ORDER } from './taskStatus'
@@ -7,37 +5,14 @@ import { mockUsers } from '../../data/users'
 import './KanbanBoard.css'
 import { Spinner } from '../../components/Spinner'
 
+// Tasks state now lives in ProjectPage, so the board only renders what it is given
 interface KanbanBoardProps {
-  projectId: string
+  tasks: Task[]
+  isLoading: boolean
+  onMove: (taskId: string, status: TaskStatus) => void
 }
 
-export function KanbanBoard({ projectId }: KanbanBoardProps) {
-  const [tasks, setTasks] = useState<Task[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTasks(mockTasks.filter((task) => task.projectId === projectId))
-      setLoading(false)
-    }, 800)
-
-    return () => clearTimeout(timer)
-  }, [projectId])
-
-  const moveTask = (taskId: string, nextStatus: TaskStatus) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === taskId
-          ? {
-              ...task,
-              status: nextStatus,
-              updatedAt: new Date().toISOString(),
-            }
-          : task,
-      ),
-    )
-  }
-
+export function KanbanBoard({ tasks, isLoading, onMove }: KanbanBoardProps) {
   const getAssignee = (assigneeId: string | null) => {
     if (!assigneeId) {
       return null
@@ -46,7 +21,7 @@ export function KanbanBoard({ projectId }: KanbanBoardProps) {
     return mockUsers.find((user) => user.id === assigneeId) ?? null
   }
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="kanban-board-spinner">
         <Spinner label="Loading tasks" />
@@ -62,7 +37,7 @@ export function KanbanBoard({ projectId }: KanbanBoardProps) {
           status={status}
           tasks={tasks.filter((task) => task.status === status)}
           getAssignee={getAssignee}
-          onMove={moveTask}
+          onMove={onMove}
         />
       ))}
     </div>

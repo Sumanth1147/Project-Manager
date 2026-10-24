@@ -4,7 +4,7 @@ import {
   type ChangeEvent,
   type SubmitEventHandler,
 } from 'react'
-import { Input } from '../components/Input'
+import { Input, PasswordInput } from '../components/Input'
 import { Button } from '../components/Button'
 import './LoginPage.css'
 import { validateLogin, type LoginErrors } from '../features/auth/validateLogin'
@@ -66,7 +66,7 @@ export function LoginPage() {
       <header className="login-page-header">
         <h2>Log in</h2>
       </header>
-
+      {/* noValidate -- to avoid the default browser validation by showing it's own  popup */}
       <form className="login-form" onSubmit={handleSubmit} noValidate>
         <Input
           label="Email"
@@ -79,9 +79,8 @@ export function LoginPage() {
           ref={emailRef}
         />
 
-        <Input
+        <PasswordInput
           label="Password"
-          type="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

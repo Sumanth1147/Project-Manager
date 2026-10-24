@@ -10,6 +10,12 @@
   font-weight: 600;
 }
 
+/* Positioning context for the trailing control */
+.input-control {
+  position: relative;
+  display: flex;
+}
+
 .input {
   font: inherit;
   font-size: 14px;
@@ -20,6 +26,17 @@
   border-radius: var(--radius);
 }
 
+/* min-width lets the input shrink instead of overflowing the wrapper */
+.input-control > .input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Keep long values from running under the trailing control */
+.input-has-trailing {
+  padding-right: 36px;
+}
+
 .input:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
@@ -27,6 +44,29 @@
 
 .input-invalid {
   border: 1px solid var(--danger);
+}
+
+.input-toggle {
+  position: absolute;
+  top: 50%;
+  right: var(--space-1);
+  transform: translateY(-50%);
+  display: flex;
+  padding: var(--space-1);
+  color: var(--text);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.input-toggle:hover {
+  color: var(--text-heading);
+}
+
+.input-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 .input-error,

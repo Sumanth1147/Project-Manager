@@ -7,6 +7,11 @@
 - `useId` returns the same string on both sides.
 - You’re not doing SSR yet — that’s still why the hook exists (interview answer).
 
+## Data flow
+
+- **Data down, events up:** pass state as props; send changes back via callbacks (`onChange`, `onSubmit`, `onClose`).
+- Wanting to “send an event down” usually means the state lives on the wrong side — lift it to the parent that owns the data.
+
 ## Controlled vs uncontrolled inputs
 
 - **Controlled:** React state is the source of truth (`value` + `onChange`).
