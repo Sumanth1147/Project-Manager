@@ -19,6 +19,7 @@ import {
   isEmailTaken,
   saveSession,
 } from '../features/auth/fakeAuth'
+import '../features/auth/auth.css'
 import './RegisterPage.css'
 
 export function RegisterPage() {
@@ -84,21 +85,25 @@ export function RegisterPage() {
     }
 
     setIsSubmitting(true)
-    const user = await fakeRegister(values.name, values.email)
-    setIsSubmitting(false)
-
-    saveSession(user.id)
-    navigate('/dashboard', { replace: true })
+    try {
+      const user = await fakeRegister(values.name, values.email)
+      saveSession(user.id)
+      navigate('/dashboard', { replace: true })
+    } catch {
+      setFormError('Could not create your account. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <section className="register-page">
-      <header className="register-page-header">
+    <section className="auth-page">
+      <header className="auth-page-header">
         <h2>Create your account</h2>
       </header>
 
       {/* noValidate -- to avoid the default browser validation popup */}
-      <form className="register-form" onSubmit={handleSubmit} noValidate>
+      <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <Input
           label="Name"
           name="name"
@@ -123,6 +128,7 @@ export function RegisterPage() {
         <PasswordInput
           label="Password"
           name="password"
+          hint="At least 8 characters"
           autoComplete="new-password"
           value={values.password}
           onChange={handleChange}
@@ -141,17 +147,13 @@ export function RegisterPage() {
         />
 
         {formError && (
-          <p className="register-error" role="alert">
+          <p className="auth-error" role="alert">
             {formError}
           </p>
         )}
 
         {/* Button defaults to type="button", so submit has to be explicit */}
-        <Button
-          type="submit"
-          className="register-submit"
-          disabled={isSubmitting}
-        >
+        <Button type="submit" className="auth-submit" disabled={isSubmitting}>
           {isSubmitting ? 'Creating account...' : 'Register'}
         </Button>
 

@@ -61,7 +61,14 @@ export function getSessionUser(): User | null {
     return null
   }
 
-  return mockUsers.find((user) => user.id === userId) ?? null
+  const user = mockUsers.find((candidate) => candidate.id === userId) ?? null
+
+  if (!user) {
+    clearSession()
+    return null
+  }
+
+  return user
 }
 
 export function clearSession(): void {

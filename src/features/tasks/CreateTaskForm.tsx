@@ -6,7 +6,7 @@ import {
 } from 'react'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
-import { Select } from '../../components/Dropdown/select'
+import { Select } from '../../components/Dropdown/Select'
 import { mockUsers } from '../../data/users'
 import { PRIORITY_LABELS, PRIORITY_ORDER } from './taskPriority'
 import { STATUS_LABELS, STATUS_ORDER } from './taskStatus'

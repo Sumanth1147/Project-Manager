@@ -17,6 +17,22 @@
   color: var(--text-heading);
 }
 
+/* Reads as a heading until hovered or focused */
+.task-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.task-card-title a:hover {
+  text-decoration: underline;
+}
+
+.task-card-title a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
 .task-card-description {
   margin: 0;
   font-size: 13px;

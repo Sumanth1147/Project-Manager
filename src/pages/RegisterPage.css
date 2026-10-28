@@ -1,41 +1,4 @@
-.register-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 380px;
-  min-height: 100svh;
-  padding: var(--space-4);
-  margin: 0 auto;
-}
-
-.register-page-header {
-  color: var(--text-heading);
-  margin-bottom: var(--space-4);
-}
-
-.register-page-header h2 {
-  margin: 0;
-}
-
-.register-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.register-submit {
-  align-self: flex-start;
-}
-
-.register-error {
-  padding: var(--space-2) var(--space-3);
-  margin: 0;
-  color: var(--danger);
-  font-size: 13px;
-  background-color: var(--danger-bg);
-  border-radius: var(--radius);
-}
-
+/* Register-only — shared auth layout lives in features/auth/auth.css */
 .register-login-link {
   margin: 0;
   font-size: 13px;

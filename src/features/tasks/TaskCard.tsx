@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Badge } from '../../components/Badge'
 import { Button } from '../../components/Button'
 import { Card } from '../../components/Card'
@@ -29,7 +30,10 @@ export function TaskCard({ task, assignee, onMove }: TaskCardProps) {
   return (
     <Card className="task-card">
       <div className="task-card-header">
-        <h4 className="task-card-title">{task.title}</h4>
+        {/* The title links, not the Card - an anchor cannot wrap the buttons */}
+        <h4 className="task-card-title">
+          <Link to={`/tasks/${task.id}`}>{task.title}</Link>
+        </h4>
         <Badge variant={PRIORITY_BADGE_VARIANT[task.priority]}>
           {PRIORITY_LABELS[task.priority]}
         </Badge>

@@ -31,6 +31,8 @@ Small fixes that came out of a review but don't belong to a step. Clear these on
 | Format-on-save not firing — Prettier run manually every time                     | 25 Aug | Check the Prettier extension is installed/enabled; watch the "Prettier" Output panel on save |
 | Leftover commented-out `@media (prefers-color-scheme: dark)` line in `index.css` | 4 Sep  | Dead comment above the working query — delete it                                             |
 | Path aliases (`@/lib/cn`)                                                        | —      | Do it when `../../../` starts hurting, around S6                                             |
+| Unused `tailwindcss` / `postcss` / `autoprefixer` in `package.json`              | 28 Oct | Came with the starter, never configured. Uninstall; reinstall at P6.12                       |
+| `components/Dropdown/select.tsx` → `components/Select/Select.tsx`                | 28 Oct | Only component folder not matching its file/export name, and the only one with no barrel     |
 
 _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
@@ -328,6 +330,49 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ---
 
+## Styling & component library strategy
+
+**Decision: hand-built components on plain CSS + design tokens through Phase 5. First and only contact with Tailwind and with a component library is in Phase 6, folded into steps already on the calendar.**
+
+### Why not Tailwind now
+
+`tailwindcss`, `postcss` and `autoprefixer` are in `package.json` but nothing imports or configures them. They arrived with the starter — that's an accident, not a decision.
+
+The reason to leave Tailwind alone for now is that its main benefit is a constrained design scale, and `index.css` already has one. Converting ~20 CSS files to utility classes is 10–15 hours of retyping that teaches nothing new about CSS, React or TypeScript. "I used Tailwind" is worth very little in an interview; "I built a token layer, and here's when I'd pick Tailwind over it" is worth a lot.
+
+The gap that is real: Tailwind is everywhere in the job market, and never having touched it is a fair thing to be asked about. One scoped session closes it.
+
+### Why not MUI or Ant Design at all in this project
+
+A ready-made library would delete the strongest thing here. `Input` with `useId` + `aria-describedby`, `Modal` with a portal and an Escape listener, `Badge` with a typed variant map — those **are** the portfolio. Swapping them for `<TextField />` removes the evidence and leaves nothing in its place.
+
+### When real teams actually reach for one
+
+| Situation                                      | What teams do                                     |
+| ---------------------------------------------- | ------------------------------------------------- |
+| Company owns a design system                   | Build in-house — the skill being practised here   |
+| Product team with a custom design              | Headless primitives (Radix, React Aria) + own CSS |
+| Internal tools, admin panels, speed over brand | Full library — MUI, Ant Design, Mantine           |
+
+The dividing line in practice is **accessibility complexity, not visual complexity.** Teams hand-roll buttons, cards, inputs and layout. They buy the moment they need a focus-trapped dialog, a combobox, a date picker, or a virtualized data table — those carry hundreds of keyboard and screen-reader edge cases that are genuinely not worth rebuilding.
+
+### The two touchpoints
+
+Both attach to steps already scheduled, so neither adds hours to the plan.
+
+| Where                                                   | What to do                                                                                                     | Why there                                                                                  |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **P6.12** · `Skeleton` component                        | Build this one component with Tailwind instead of a `.css` file. Change nothing else.                          | Pure presentation and brand new — a real taste test with zero migration cost               |
+| **After P6.14–6.16** · focus trap, Escape, keyboard nav | Hand-roll the focus trap first. Then rebuild `Modal` on Radix Dialog and write down what it gave you for free. | Build, then buy, in that order — you can only judge a library once you've felt the problem |
+
+That order produces both halves of the interview answer: "I built it from scratch, and here is exactly when I'd stop doing that."
+
+### Until then
+
+Remove `tailwindcss`, `postcss` and `autoprefixer` now and reinstall at P6.12. Unused dependencies are something a reviewer notices, and reinstalling costs a minute.
+
+---
+
 ## How to use this file
 
 1. **Every day you work**, fill the `Actual step` and `Hrs` columns in the [Daily Step Tracker](#daily-step-tracker). Takes 20 seconds.
@@ -513,6 +558,8 @@ Update `Actual` every Saturday. `Cum. Planned` is fixed — it's your pace line.
 - [ ] Modal focus trap + Escape to close
 - [ ] Keyboard navigation on the board
 - [ ] Labels and ARIA on all form controls
+- [ ] One component (`Skeleton`) built with Tailwind + written comparison
+- [ ] `Modal` rebuilt on Radix Dialog **after** hand-rolling the focus trap
 
 ### Phase 7 — Security & testing (W23–W25)
 
@@ -539,20 +586,22 @@ Update `Actual` every Saturday. `Cum. Planned` is fixed — it's your pace line.
 
 Fill one line as soon as you finish the relevant phase, while it's fresh. This is what you'll actually say in interviews.
 
-| Topic                                             | My story from DevBoard |
-| ------------------------------------------------- | ---------------------- |
-| How I structure a React app                       |                        |
-| `components/` vs `features/` — how I decide       |                        |
-| Override vs merge when spreading props            |                        |
-| Why `useParams` returns `string \| undefined`     |                        |
-| Why I normalize mock data by ID                   |                        |
-| The four states of every list                     |                        |
-| Local vs URL vs server vs global state            |                        |
-| Why an API layer instead of `fetch` in components |                        |
-| Auth approach and why I chose it                  |                        |
-| A performance problem I found and fixed           |                        |
-| A bug that took me hours                          |                        |
-| Something I'd refactor if I started over          |                        |
+| Topic                                               | My story from DevBoard |
+| --------------------------------------------------- | ---------------------- |
+| How I structure a React app                         |                        |
+| `components/` vs `features/` — how I decide         |                        |
+| Override vs merge when spreading props              |                        |
+| Why `useParams` returns `string \| undefined`       |                        |
+| Why I normalize mock data by ID                     |                        |
+| The four states of every list                       |                        |
+| Local vs URL vs server vs global state              |                        |
+| Why an API layer instead of `fetch` in components   |                        |
+| Auth approach and why I chose it                    |                        |
+| Plain CSS + tokens vs Tailwind vs MUI — how I chose |                        |
+| When I'd build a component vs reach for a library   |                        |
+| A performance problem I found and fixed             |                        |
+| A bug that took me hours                            |                        |
+| Something I'd refactor if I started over            |                        |
 
 ---
 

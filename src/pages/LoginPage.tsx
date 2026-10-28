@@ -6,7 +6,7 @@ import {
 } from 'react'
 import { Input, PasswordInput } from '../components/Input'
 import { Button } from '../components/Button'
-import './LoginPage.css'
+import '../features/auth/auth.css'
 import { validateLogin, type LoginErrors } from '../features/auth/validateLogin'
 import { useNavigate } from 'react-router-dom'
 import { fakeLogin, saveSession } from '../features/auth/fakeAuth'
@@ -39,17 +39,23 @@ export function LoginPage() {
     }
 
     setIsSubmitting(true)
-    const user = await fakeLogin(email, password)
-    setIsSubmitting(false)
+    try {
+      const user = await fakeLogin(email, password)
 
-    if (!user) {
-      setFormError('Email or password is incorrect')
-      emailRef.current?.focus()
-      return
+      // Narrow null before using user.id
+      if (!user) {
+        setFormError('Email or password is incorrect')
+        emailRef.current?.focus()
+        return
+      }
+
+      saveSession(user.id)
+      navigate('/dashboard', { replace: true })
+    } catch {
+      setFormError('Could not login, please try again')
+    } finally {
+      setIsSubmitting(false)
     }
-
-    saveSession(user.id)
-    navigate('/dashboard', { replace: true })
   }
 
   // Input onChange is ChangeEvent<HTMLInputElement>, not the form
@@ -62,12 +68,12 @@ export function LoginPage() {
   }
 
   return (
-    <section className="login-page">
-      <header className="login-page-header">
+    <section className="auth-page">
+      <header className="auth-page-header">
         <h2>Log in</h2>
       </header>
       {/* noValidate -- to avoid the default browser validation by showing it's own  popup */}
-      <form className="login-form" onSubmit={handleSubmit} noValidate>
+      <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <Input
           label="Email"
           type="email"
@@ -90,13 +96,13 @@ export function LoginPage() {
         />
 
         {formError && (
-          <p className="login-error" role="alert">
+          <p className="auth-error" role="alert">
             {formError}
           </p>
         )}
 
         {/* Button defaults to type="button", so submit has to be explicit */}
-        <Button type="submit" className="login-submit" disabled={isSubmitting}>
+        <Button type="submit" className="auth-submit" disabled={isSubmitting}>
           {isSubmitting ? 'Logging In...' : 'Log In'}
         </Button>
       </form>
