@@ -15,6 +15,7 @@ body {
 /* 2. Light-mode tokens (base — always defined) */
 :root {
   --text: #4b5563;
+  --text-muted: #6b7280;
   --text-heading: #111827;
   --bg: #ffffff;
   --surface: #f9fafb;
@@ -44,6 +45,7 @@ body {
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
+    --text-muted: #7f8795;
     --text-heading: #f3f4f6;
     --bg: #16171d;
     --surface: #1f2028;

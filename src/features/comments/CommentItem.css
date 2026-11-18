@@ -1,0 +1,37 @@
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.comment-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  /* min-width lets the text wrap instead of stretching the row */
+  min-width: 0;
+}
+
+.comment-item-meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.comment-item-author {
+  color: var(--text-heading);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.comment-item-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.comment-item-text {
+  margin: 0;
+  font-size: 13px;
+  /* An unbroken string must not push the row wider than the card */
+  overflow-wrap: break-word;
+}

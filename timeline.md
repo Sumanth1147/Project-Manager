@@ -22,6 +22,8 @@
 
 **Thursday is a buffer day from 3 Sep 2026 onward** (office day). Planned work is zero. If you happen to get free time, use it to catch up on whatever slipped earlier in the week — never to pull work forward. Weeks 1–2 (17–29 Aug) still show Thursday as a working day, because that's how they were actually planned.
 
+**Revision Saturdays.** Every 21 days from 10 Oct, the Saturday row carries a ☐ revision to-do on top of its step. It rotates definitions → JS syntax → React syntax and then repeats.
+
 #### Carry-forward items
 
 Small fixes that came out of a review but don't belong to a step. Clear these on a buffer day or at the start of a session. Delete the line when done.
@@ -104,7 +106,7 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 | 23 Sep | Wed | S6.8 · Create Task submit + append to board | **S6.8 done** |     |      |
 | 24 Sep | Thu | **Buffer** · office day                     |               |     |      |
 | 25 Sep | Fri | S6.9 · RegisterPage                         |               |     |      |
-| 26 Sep | Sat | S7.1 · TaskPage detail view                 |               |     |      |
+| 26 Sep | Sat | S7.1 · TaskPage detail view                 | **S7.1 done** |     |      |
 
 ### Week 7 · 28 Sep – 3 Oct — Phase 1: task detail & comments
 
@@ -119,14 +121,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 8 · 5–10 Oct — Phase 1: filters, dashboard, cleanup
 
-| Date   | Day | Planned step                                          | Actual step | Hrs | Note |
-| ------ | --- | ----------------------------------------------------- | ----------- | --- | ---- |
-| 5 Oct  | Mon | S8.3 · Status + priority filters                      |             |     |      |
-| 6 Oct  | Tue | S8.4 · Sort dropdown                                  |             |     |      |
-| 7 Oct  | Wed | S8.5 · `useDebounce` custom hook                      |             |     |      |
-| 8 Oct  | Thu | **Buffer** · office day                               |             |     |      |
-| 9 Oct  | Fri | S8.6 + S9 · Filters in URL params, dashboard stats    |             |     |      |
-| 10 Oct | Sat | S10 · Extract `useTasks`, ProfilePage, Phase 1 review |             |     |      |
+| Date   | Day | Planned step                                                                        | Actual step | Hrs | Note |
+| ------ | --- | ----------------------------------------------------------------------------------- | ----------- | --- | ---- |
+| 5 Oct  | Mon | S8.3 · Status + priority filters                                                    |             |     |      |
+| 6 Oct  | Tue | S8.4 · Sort dropdown                                                                |             |     |      |
+| 7 Oct  | Wed | S8.5 · `useDebounce` custom hook                                                    |             |     |      |
+| 8 Oct  | Thu | **Buffer** · office day                                                             |             |     |      |
+| 9 Oct  | Fri | S8.6 + S9 · Filters in URL params, dashboard stats                                  |             |     |      |
+| 10 Oct | Sat | S10 · Extract `useTasks`, ProfilePage, Phase 1 review · ☐ **Revision:** definitions |             |     |      |
 
 ### Week 9 · 12–17 Oct — Phase 2: backend
 
@@ -152,14 +154,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 11 · 26–31 Oct — Phase 2: API modules
 
-| Date   | Day | Planned step                                 | Actual step | Hrs | Note |
-| ------ | --- | -------------------------------------------- | ----------- | --- | ---- |
-| 26 Oct | Mon | P2.11 · `projectApi.ts`                      |             |     |      |
-| 27 Oct | Tue | P2.12 · `taskApi.ts`                         |             |     |      |
-| 28 Oct | Wed | P2.13 · `userApi.ts`                         |             |     |      |
-| 29 Oct | Thu | **Buffer** · office day                      |             |     |      |
-| 30 Oct | Fri | P2.14 · Replace mocks in ProjectsPage        |             |     |      |
-| 31 Oct | Sat | P2.15 · Replace mocks in board + task detail |             |     |      |
+| Date   | Day | Planned step                                                             | Actual step | Hrs | Note |
+| ------ | --- | ------------------------------------------------------------------------ | ----------- | --- | ---- |
+| 26 Oct | Mon | P2.11 · `projectApi.ts`                                                  |             |     |      |
+| 27 Oct | Tue | P2.12 · `taskApi.ts`                                                     |             |     |      |
+| 28 Oct | Wed | P2.13 · `userApi.ts`                                                     |             |     |      |
+| 29 Oct | Thu | **Buffer** · office day                                                  |             |     |      |
+| 30 Oct | Fri | P2.14 · Replace mocks in ProjectsPage                                    |             |     |      |
+| 31 Oct | Sat | P2.15 · Replace mocks in board + task detail · ☐ **Revision:** JS syntax |             |     |      |
 
 ### Week 12 · 2–7 Nov — Phase 2: states & config
 
@@ -185,14 +187,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 14 · 16–21 Nov — Phase 3: auth frontend
 
-| Date   | Day | Planned step                                                  | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------------------------- | ----------- | --- | ---- |
-| 16 Nov | Mon | P3.7 · `useAuth` hook                                         |             |     |      |
-| 17 Nov | Tue | P3.8 · LoginPage real auth                                    |             |     |      |
-| 18 Nov | Wed | P3.9 · RegisterPage real auth                                 |             |     |      |
-| 19 Nov | Thu | **Buffer** · office day                                       |             |     |      |
-| 20 Nov | Fri | P3.10 · `ProtectedRoute` wrapping the layout route            |             |     |      |
-| 21 Nov | Sat | P3.11–3.14 · Redirect after login, logout, 401 refresh, roles |             |     |      |
+| Date   | Day | Planned step                                                                                 | Actual step | Hrs | Note |
+| ------ | --- | -------------------------------------------------------------------------------------------- | ----------- | --- | ---- |
+| 16 Nov | Mon | P3.7 · `useAuth` hook                                                                        |             |     |      |
+| 17 Nov | Tue | P3.8 · LoginPage real auth                                                                   |             |     |      |
+| 18 Nov | Wed | P3.9 · RegisterPage real auth                                                                |             |     |      |
+| 19 Nov | Thu | **Buffer** · office day                                                                      |             |     |      |
+| 20 Nov | Fri | P3.10 · `ProtectedRoute` wrapping the layout route                                           |             |     |      |
+| 21 Nov | Sat | P3.11–3.14 · Redirect after login, logout, 401 refresh, roles · ☐ **Revision:** React syntax |             |     |      |
 
 ### Week 15 · 23–28 Nov — Phase 4: queries
 
@@ -218,14 +220,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 17 · 7–12 Dec — Phase 4 finish → Phase 5 start
 
-| Date   | Day | Planned step                                    | Actual step | Hrs | Note |
-| ------ | --- | ----------------------------------------------- | ----------- | --- | ---- |
-| 7 Dec  | Mon | P4.11 · Optimistic Kanban move                  |             |     |      |
-| 8 Dec  | Tue | P4.12 · Rollback on error                       |             |     |      |
-| 9 Dec  | Wed | P4.13 · Comments query + mutation               |             |     |      |
-| 10 Dec | Thu | **Buffer** · office day                         |             |     |      |
-| 11 Dec | Fri | P4 review · write the caching notes down        |             |     |      |
-| 12 Dec | Sat | P5.1–5.2 · Store setup + typed `useAppSelector` |             |     |      |
+| Date   | Day | Planned step                                                                  | Actual step | Hrs | Note |
+| ------ | --- | ----------------------------------------------------------------------------- | ----------- | --- | ---- |
+| 7 Dec  | Mon | P4.11 · Optimistic Kanban move                                                |             |     |      |
+| 8 Dec  | Tue | P4.12 · Rollback on error                                                     |             |     |      |
+| 9 Dec  | Wed | P4.13 · Comments query + mutation                                             |             |     |      |
+| 10 Dec | Thu | **Buffer** · office day                                                       |             |     |      |
+| 11 Dec | Fri | P4 review · write the caching notes down                                      |             |     |      |
+| 12 Dec | Sat | P5.1–5.2 · Store setup + typed `useAppSelector` · ☐ **Revision:** definitions |             |     |      |
 
 ### Week 18 · 14–19 Dec — Phase 5: Redux slices
 
@@ -251,14 +253,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 20 · 28 Dec – 2 Jan 2027 — Phase 6: lazy loading & boundaries
 
-| Date   | Day | Planned step                                  | Actual step | Hrs | Note |
-| ------ | --- | --------------------------------------------- | ----------- | --- | ---- |
-| 28 Dec | Mon | P6.1 · `React.lazy` on all routes             |             |     |      |
-| 29 Dec | Tue | P6.2 · `Suspense` fallbacks                   |             |     |      |
-| 30 Dec | Wed | P6.3 · Verify chunk splitting in build output |             |     |      |
-| 31 Dec | Thu | **Buffer** · office day                       |             |     |      |
-| 1 Jan  | Fri | _Holiday — skip_                              |             |     |      |
-| 2 Jan  | Sat | P6.4 · `ErrorBoundary` component              |             |     |      |
+| Date   | Day | Planned step                                                 | Actual step | Hrs | Note |
+| ------ | --- | ------------------------------------------------------------ | ----------- | --- | ---- |
+| 28 Dec | Mon | P6.1 · `React.lazy` on all routes                            |             |     |      |
+| 29 Dec | Tue | P6.2 · `Suspense` fallbacks                                  |             |     |      |
+| 30 Dec | Wed | P6.3 · Verify chunk splitting in build output                |             |     |      |
+| 31 Dec | Thu | **Buffer** · office day                                      |             |     |      |
+| 1 Jan  | Fri | _Holiday — skip_                                             |             |     |      |
+| 2 Jan  | Sat | P6.4 · `ErrorBoundary` component · ☐ **Revision:** JS syntax |             |     |      |
 
 ### Week 21 · 4–9 Jan 2027 — Phase 6: performance
 
@@ -284,14 +286,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 23 · 18–23 Jan — Phase 6 finish → Phase 7: testing
 
-| Date   | Day | Planned step                                     | Actual step | Hrs | Note |
-| ------ | --- | ------------------------------------------------ | ----------- | --- | ---- |
-| 18 Jan | Mon | P6.17 · ARIA roles + form label audit            |             |     |      |
-| 19 Jan | Tue | P6.18 · axe DevTools pass                        |             |     |      |
-| 20 Jan | Wed | P6.19 · Colour contrast + focus visibility fixes |             |     |      |
-| 21 Jan | Thu | **Buffer** · office day                          |             |     |      |
-| 22 Jan | Fri | P7.1 · Vitest + React Testing Library setup      |             |     |      |
-| 23 Jan | Sat | P7.2–7.3 · `Button` test + form validation test  |             |     |      |
+| Date   | Day | Planned step                                                                   | Actual step | Hrs | Note |
+| ------ | --- | ------------------------------------------------------------------------------ | ----------- | --- | ---- |
+| 18 Jan | Mon | P6.17 · ARIA roles + form label audit                                          |             |     |      |
+| 19 Jan | Tue | P6.18 · axe DevTools pass                                                      |             |     |      |
+| 20 Jan | Wed | P6.19 · Colour contrast + focus visibility fixes                               |             |     |      |
+| 21 Jan | Thu | **Buffer** · office day                                                        |             |     |      |
+| 22 Jan | Fri | P7.1 · Vitest + React Testing Library setup                                    |             |     |      |
+| 23 Jan | Sat | P7.2–7.3 · `Button` test + form validation test · ☐ **Revision:** React syntax |             |     |      |
 
 ### Week 24 · 25–30 Jan — Phase 7: testing & security
 
@@ -317,14 +319,14 @@ _All six Badge/token items raised 2 Sep were cleared on 4 Sep._
 
 ### Week 26 · 8–13 Feb 2027 — Phase 8 finish + interview prep
 
-| Date   | Day | Planned step                                    | Actual step | Hrs | Note |
-| ------ | --- | ----------------------------------------------- | ----------- | --- | ---- |
-| 8 Feb  | Mon | P8.3 · Deploy frontend                          |             |     |      |
-| 9 Feb  | Tue | P8.4 · Production env vars + CORS               |             |     |      |
-| 10 Feb | Wed | P8.5–8.6 · Seed demo account, README + diagram  |             |     |      |
-| 11 Feb | Thu | **Buffer** · office day                         |             |     |      |
-| 12 Feb | Fri | Fill the interview story bank + say it out loud |             |     |      |
-| 13 Feb | Sat | Final polish + record a demo video              |             |     |      |
+| Date   | Day | Planned step                                                     | Actual step | Hrs | Note |
+| ------ | --- | ---------------------------------------------------------------- | ----------- | --- | ---- |
+| 8 Feb  | Mon | P8.3 · Deploy frontend                                           |             |     |      |
+| 9 Feb  | Tue | P8.4 · Production env vars + CORS                                |             |     |      |
+| 10 Feb | Wed | P8.5–8.6 · Seed demo account, README + diagram                   |             |     |      |
+| 11 Feb | Thu | **Buffer** · office day                                          |             |     |      |
+| 12 Feb | Fri | Fill the interview story bank + say it out loud                  |             |     |      |
+| 13 Feb | Sat | Final polish + record a demo video · ☐ **Revision:** definitions |             |     |      |
 
 **Stretch features** (drag and drop with `@dnd-kit`, notification dropdown, infinite scroll on activity) are **not scheduled**. Add them only if you finish early. They are the first thing to cut, never tests or accessibility.
 

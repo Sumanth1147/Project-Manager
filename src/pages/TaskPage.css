@@ -1,3 +1,15 @@
+/* Spacing between the sections is the page's job, not each card's */
+.task-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Margins don't collapse in flex, so the header margin would add to the gap */
+.task-page .page-header {
+  margin-bottom: 0;
+}
+
 .task-detail {
   display: flex;
   flex-direction: column;
@@ -25,7 +37,7 @@
   margin-bottom: var(--space-1);
   font-size: 12px;
   text-transform: uppercase;
-  opacity: 0.7;
+  color: var(--text-muted);
   letter-spacing: 0.04em;
 }
 

@@ -32,5 +32,5 @@
 .project-card-meta {
   margin: 0;
   font-size: 14px;
-  opacity: 0.75;
+  color: var(--text-muted);
 }

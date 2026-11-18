@@ -3,9 +3,11 @@ import { Avatar } from '../components/Avatar'
 import { Badge } from '../components/Badge'
 import { Card } from '../components/Card'
 import { EmptyState } from '../components/EmptyState'
+import { mockComments } from '../data/comments'
 import { mockProjects } from '../data/projects'
 import { mockTasks } from '../data/tasks'
 import { mockUsers } from '../data/users'
+import { CommentList } from '../features/comments/CommentList'
 import {
   PRIORITY_BADGE_VARIANT,
   PRIORITY_LABELS,
@@ -36,9 +38,13 @@ export function TaskPage() {
 
   const project = mockProjects.find((item) => item.id === task.projectId)
   const assignee = mockUsers.find((user) => user.id === task.assigneeId)
+  const comments = mockComments.filter((comment) => comment.taskId === task.id)
+
+  const getAuthor = (authorId: string) =>
+    mockUsers.find((user) => user.id === authorId) ?? null
 
   return (
-    <section className="page">
+    <section className="page task-page">
       <header className="page-header">
         <h2>{task.title}</h2>
         {/* A link built from the task's own data, so it survives a cold load */}
@@ -109,6 +115,10 @@ export function TaskPage() {
             </dd>
           </div>
         </dl>
+      </Card>
+
+      <Card>
+        <CommentList comments={comments} getAuthor={getAuthor} />
       </Card>
     </section>
   )
