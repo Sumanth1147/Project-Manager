@@ -1,0 +1,15 @@
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.comment-form-textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.comment-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}

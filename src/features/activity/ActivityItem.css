@@ -1,0 +1,20 @@
+.activity-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity-item-text {
+  margin: 0;
+  font-size: 13px;
+}
+
+.activity-item-text b {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.activity-item-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}

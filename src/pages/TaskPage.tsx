@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Avatar } from '../components/Avatar'
 import { Badge } from '../components/Badge'
@@ -7,6 +8,11 @@ import { mockComments } from '../data/comments'
 import { mockProjects } from '../data/projects'
 import { mockTasks } from '../data/tasks'
 import { mockUsers } from '../data/users'
+import { mockActivities } from '../data/activities'
+import { ActivityList } from '../features/activity/ActivityList'
+import { getSessionUser } from '../features/auth/fakeAuth'
+import { CommentForm } from '../features/comments/CommentForm'
+import { addComment } from '../features/comments/commentStore'
 import { CommentList } from '../features/comments/CommentList'
 import {
   PRIORITY_BADGE_VARIANT,
@@ -17,10 +23,15 @@ import {
   STATUS_LABELS,
 } from '../features/tasks/taskStatus'
 import { formatDate } from '../lib/formatDate'
+import type { Comment } from '../types/comment'
 import './TaskPage.css'
 
 export function TaskPage() {
   const { taskId } = useParams()
+  // Hold every comment and filter per task - no effect needed to reseed.
+  // Copy on init so writes to the store never mutate this array.
+  const [comments, setComments] = useState<Comment[]>(() => [...mockComments])
+
   // An undefined taskId matches no id, so one guard covers both cases
   const task = mockTasks.find((item) => item.id === taskId)
 
@@ -38,10 +49,39 @@ export function TaskPage() {
 
   const project = mockProjects.find((item) => item.id === task.projectId)
   const assignee = mockUsers.find((user) => user.id === task.assigneeId)
-  const comments = mockComments.filter((comment) => comment.taskId === task.id)
+  const currentUser = getSessionUser()
+  const taskComments = comments.filter((comment) => comment.taskId === task.id)
 
-  const getAuthor = (authorId: string) =>
-    mockUsers.find((user) => user.id === authorId) ?? null
+  const getUser = (userId: string) =>
+    mockUsers.find((user) => user.id === userId) ?? null
+
+  const getUserName = (userId: string | null) =>
+    userId === null ? 'Unassigned' : (getUser(userId)?.name ?? 'Unknown user')
+
+  // Copy before sorting - sort() mutates, and this array feeds the render
+  const activities = [...mockActivities]
+    .filter((activity) => activity.taskId === task.id)
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
+  const handleAddComment = (body: string) => {
+    if (!currentUser) {
+      return
+    }
+
+    const comment: Comment = {
+      id: crypto.randomUUID(),
+      taskId: task.id,
+      authorId: currentUser.id,
+      body,
+      createdAt: new Date().toISOString(),
+    }
+
+    // Two writes: the store survives unmount, the state triggers the render
+    addComment(comment)
+
+    // Thread reads oldest-first, so a new comment belongs at the end
+    setComments((prev) => [...prev, comment])
+  }
 
   return (
     <section className="page task-page">
@@ -117,8 +157,24 @@ export function TaskPage() {
         </dl>
       </Card>
 
+      <Card className="task-comments">
+        <CommentList comments={taskComments} getAuthor={getUser} />
+
+        {currentUser ? (
+          <CommentForm onSubmit={handleAddComment} />
+        ) : (
+          <p className="task-comments-signed-out">
+            <Link to="/login">Log in</Link> to add a comment.
+          </p>
+        )}
+      </Card>
+
       <Card>
-        <CommentList comments={comments} getAuthor={getAuthor} />
+        <ActivityList
+          activities={activities}
+          getUser={getUser}
+          getUserName={getUserName}
+        />
       </Card>
     </section>
   )

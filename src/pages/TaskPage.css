@@ -46,6 +46,17 @@
   color: var(--text-heading);
 }
 
+.task-comments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.task-comments-signed-out {
+  margin: 0;
+  font-size: 13px;
+}
+
 .task-detail-assignee {
   display: flex;
   align-items: center;
